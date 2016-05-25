@@ -1,0 +1,10 @@
+/TODO Investigate where this template is used
+.cont-nav
+  ul.nav.nav-pills.nav-stacked
+    li(ng-class="{active: sidebarActiveItem === 'accounts'}"): a(ui-sref="doctor.accounts" ui-sref-opts="{reload: true}") Accounts Base
+    li(ng-class="{active: sidebarActiveItem === 'cqi_treatment_templates'}"): a(ui-sref="doctor.cqi_treatment_templates.list" ui-sref-opts="{reload: true}") Treatment Base
+
+    li(ng-class="{active: sidebarActiveItem === 'dialogs'}")
+      a(ui-sref="dialogs.list" ui-sref-opts="{reload: true}")
+        span.text Messages
+        span.badge ng-if="dialogsUnreadCount" {{ dialogsUnreadCount }}

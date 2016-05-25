@@ -1,0 +1,13 @@
+
+.sidebar scroll-y-fix=true
+  div ng-include="'/app/templates/common/_sidebar.html'"
+.main.light flex=true scroll-y=true
+  .cont
+    div ng-controller="ctrl.doctor.CqiTreatmentTemplatesItem"
+      div.clearfix
+        h1.head.pull-left {{ pageCaption }}
+        .pull-right.top-indexed
+          a href="" ng-click="fn.cancel()"
+            i.fa.fa-times
+            span.text Cancel
+      div ng-include="'/app/templates/doctor/cqi_treatment_templates/_form.html'"

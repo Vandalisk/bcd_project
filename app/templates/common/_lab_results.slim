@@ -1,0 +1,36 @@
+
+.lab-results flex=true layout="column"
+  / .no-results ng-hide="labResults.labResultsCount > 0"
+    / b Unfortunately, laboratory tests are not done yet
+
+  / .side-1 flex="1" scroll-y=true ng-class="{active: currentState.state.name === states().item}"
+  / .lab-results-table lab-results=true ng-show="labResults.labResultsCount > 0"
+  .lab-results-table lab-results=true
+    p.label Diabetes & Thyroid
+    .wrap-lab-test
+      div fix-table-width="{{diagram.columnDefs.length}}" ag-grid="labResults.gridOptions" style="height: 100%" class="ag-fresh" ng-if="dataLoaded"
+
+      .filter.cf
+        .wrap-all-tests
+          a.show-all-items data-action="showAllTests" Show all tests
+          a.filter-tests data-action="showFilterDialog" lab-results-show-dialog-filter-tests=true What tests to show?
+        .wrap-important-only
+          a.show-all-items data-action="showImportantOnly" Show important only
+
+        span.prompt Click test's name to learn about it
+
+    .wrap-mobile-version
+      p.title Diabetes & Thyroid
+      div
+        .full-screen-table toggle-full-table-lab-results=true
+          i.fa.fa-table.f16
+          span Open table in fullscreen
+        p.last-test Last test: {{labResults.lastTestDate.getFullYear()}}/{{("0" + (labResults.lastTestDate.getMonth() + 1)).slice(-2)}}/{{("0" + labResults.lastTestDate.getDate()).slice(-2)}}
+        .abnormal-tests
+          .header
+            i.fa.fa-exclamation-triangle.red
+            span Has abnormal test results
+          .body
+            ul
+              li ng-repeat="(key, value) in diagram.abnormalTests" {{key}}: {{value}}
+

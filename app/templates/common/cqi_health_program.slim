@@ -1,0 +1,16 @@
+.sidebar scroll-y-fix=true
+  div ng-include="'/app/templates/common/_sidebar.html'"
+
+.main flex=true layout="column"
+  .health-program flex=true scroll-y-fix=true
+    .requests-top-container
+      .bbbb
+        div ng-include="'/app/templates/common/cqi_treatment_templates/_stages_header.html'"
+        hr
+        .help-block {{ headerText }}
+        .selected-treatments ng-show="selectedItems.length == 0"
+          | No treatments chosen
+        .chosen-treatments.pull-right ng-show="selectedItems.length > 0" ng-class="{visible: selectedItems.length > 0}"
+          | {{ selectedItems.length }} {{ selectedItems.length == 1 ? "treatment" : "treatments" }} ({{ totalScore() }} points per month)
+    div ng-if="stage === 1" ng-include="'/app/templates/common/_cqi_health_program.html'"
+    div ng-if="stage === 2" ng-include="'/app/templates/common/_cqi_select_treatments.html'"

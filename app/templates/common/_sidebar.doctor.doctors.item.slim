@@ -1,0 +1,9 @@
+
+.cont-nav
+  ul.nav.nav-pills.nav-stacked
+    li.back(ng-class="{active: sidebarActiveItem === 'accounts'}")
+      a ui-sref="doctor.accounts.patients"
+        i.fa.fa-chevron-left
+        span.text Accounts Base
+    li(ng-class="{active: sidebarActiveItem === 'dashboard'}"):              a(ui-sref="doctor.doctors.item.dashboard" ui-sref-opts="{reload: true}") Dashboard
+    li(ng-class="{active: sidebarActiveItem === 'profile'}" access="admin"): a(ui-sref="doctor.doctors.item.edit" ui-sref-opts="{reload: true}") Profile

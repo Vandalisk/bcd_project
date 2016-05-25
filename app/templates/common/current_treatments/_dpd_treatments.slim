@@ -1,0 +1,52 @@
+.cont.interactive-table.healthcare.dpd-treaments
+  .healthcare-header style="margin-left: 45px;"
+    p.requests-header Treatments from DPD
+    p.pull-right ng-click="toggleHint('dpd')"
+      img class="hint-icon" src="/assets/images/question_badge.png" width="24" height="24"
+    p.pull-right.header-power Power
+    div data-uib-collapse="hintsCollapsed.dpd"
+      .header-hint After treatments were prescribed in DPD, they should be duplicated in MyBCD. Specify dosages and suggest to patient.
+  .table
+    .table-row.treatment ng-repeat="item in DPDTreatments | filter:search" ng-class="{ selected: isSelected(item), active: isActive(item) }"
+      .table.top-panel
+        .table-row
+          .table-cell.arrow ng-click="item.isCollapsed = !item.isCollapsed"
+            i.mi {{ item.isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+          .table-cell.brief-explanation
+            span.treatment-name {{ item.name }}
+            span.treatment-type {{ item.treatment_type | treatmentTypeConverter }}
+          .table-cell.impact
+            span ng-class="determineColor(item.impact)" {{ item.impact | impactConverter }}
+          .table-cell.power-col {{ item.power }}
+      .collapse data-uib-collapse="item.isCollapsed"
+        .bottom-panel.table
+          .table-row
+            .table-cell.icon
+              i.mi assignment
+            .table-cell.description
+              p.abstract-hint Prescribed in DPD
+              | {{ item.full_name }}
+          .table-row
+            .table-cell.icon
+              i.mi create
+            .table-cell
+              .form.treatment-form ng-if="item.treatment_type === 'medication_tablets' || item.treatment_type === 'medication_injection'"
+                .form-group
+                  .abstract-hint
+                    span Set values, same as prescribed in DPD
+                  div ng-include="'/app/templates/common/partials/_treatment_schedule.html'"
+                  div ng-include="'/app/templates/common/partials/_treatment_frequency.html'"
+              .form.treatment-form ng-if="item.treatment_type === 'lifestyle'"
+                .form-group {{ item.data.condition }}
+
+          .table-row
+            .table-cell.icon
+              i.mi description
+            .table-cell.description
+              textarea.form-control.animate ng-model="item.description" placeholder="Free text recommendations, tips and advices. Not necessary to save or prescribe treatment." style="min-height: 54px; max-width: 600px; width: calc(100% - 20px);" msd-elastic="\n" access="doctor"
+          .table-row
+            .table-cell
+            .table-cell.buttons
+              span data-action="decline"
+                .btn.btn-flat-green
+                  p Import from DPD

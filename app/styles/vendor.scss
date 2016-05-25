@@ -1,0 +1,9 @@
+@import "variables";
+$icon-font-path: "libs/bootstrap-sass/assets/fonts/bootstrap/";
+//$fa-font-path: "libs/font-awesome/fonts" !default;
+@import "libs/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
+@import "libs/bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "libs/font-awesome/font-awesome";
+@import "libs/open-sans-fontface/open-sans";
+@import "libs/jquery-ui/jquery-ui";
+@import "libs/ag-grid/ag-grid";

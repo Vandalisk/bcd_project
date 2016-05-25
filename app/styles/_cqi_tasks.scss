@@ -1,0 +1,254 @@
+.cqi-tasks {
+  .sides {
+    .side-1, .side-2 {
+      vertical-align: top;
+    }
+  }
+
+  .side-1 {
+    .healthcare-table {
+      .input-tables {
+        .inputs {
+          .abstract-hint {
+            padding-left: 0;
+          }
+          .hints, .values {
+            td:last-child {
+              padding-right: 0 !important;
+            }
+          }
+          input, .abstract-hint {
+            min-width: 46px;
+            max-width: 62px;
+          }
+        }
+      }
+    }
+  }
+
+  hr {
+    border-top: 1px solid #dedede;
+  }
+
+  @media (min-width: 768px) {
+    .side-2 {
+      float: right;
+    }
+  }
+  @media (max-width: 768px) {
+    .subheader, .side-1, .side-2  {
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  .side-2 {
+    border-left: 1px solid transparent;
+    .score-table {
+      .score-text {
+        line-height: 34px;
+        display: inline-block;
+      }
+      .score-number-head {
+        float: right;
+
+        .current-score {
+          display: inline-block;
+          vertical-align: initial;
+          font-size: 24px;
+        }
+      }
+      .score-number {
+        float: right;
+        display: inline-block;
+
+        .current-score {
+          display: inline-block;
+          font-size: 24px;
+        }
+      }
+      .big-score-scale {
+        clear: both;
+        margin: 8px 0;
+        width: 100%;
+        height: 45px;
+        .current-score-scale {
+          display: inline-block;
+          position: absolute;
+          height: 100%;
+          transition-property: width;
+          transition-duration: 1s;
+          background-color: $primary-green;
+        }
+        .rest-score-scale {
+          display: inline-block;
+          position: absolute;
+          right: 0;
+          width: 100%;
+          height: 100%;
+          background-color: white;
+        }
+      }
+      .small-score-scale {
+        clear: both;
+        padding-top: 2px;
+
+        .score-progress {
+          position: absolute;
+          height: 5px;
+          width: 30%;
+          border-radius: 30px;
+          background-color: $primary-green;
+          transition-property: width;
+          transition-duration: 1s;
+        }
+        .line {
+          position: absolute;
+          width: 100%;
+          margin: 2px 0;
+          background-color: #333333;
+          height: 1px;
+        }
+      }
+      .item-score {
+        margin-bottom: 16px;
+      }
+    }
+    &.active {
+      border-left: 1px solid #dedede;
+    }
+  }
+
+  .calendar {
+    text-align: center;
+    margin-top: 4px;
+
+    .previous-day{
+      display: inline-block;
+      float: left;
+      cursor: pointer;
+    }
+    .current-day {
+      display: inline-block;
+    }
+    .next-day {
+      display: inline-block;
+      float: right;
+      cursor: pointer;
+    }
+  }
+
+  .subheader {
+    margin-top: 10px;
+    height: 44px;
+  }
+
+  .items-list {
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+    .item {
+      width: 100%;
+      padding: 5px 20px;
+    }
+
+    .at-right {
+      .confirm {
+        padding-left: 0;
+        padding-right: 0;
+        .tasks-count {
+          display: inline-block;
+          top: 5px;
+        }
+        hr {
+          margin-top: 0;
+          margin-bottom: 10px;
+        }
+        .confirm-all-btn {
+          float: right;
+          color: $primary-green;
+          text-transform: uppercase;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .points {
+      border-radius: 100%;
+      width: 33px;
+      height: 33px;
+      border: 1px solid #9A9A9A;
+      cursor: pointer;
+      float: right;
+      margin-right: 10px;
+      transition: all 0.1s ease;
+
+      .points-content {
+        top: 5.5px;
+        text-align: center;
+      }
+
+      &:hover {
+        border: 1px solid black;
+      }
+
+      &.completed {
+        background-color: $light-green;
+        border: 0;
+        span {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .item-details {
+    .row {
+      padding: 15px 0;
+      margin: 0;
+      border-bottom: 1px solid #dedede;
+      &:last-child { border-bottom: none; }
+      &:first-child { padding-top: 0; }
+
+      p.description {
+        margin: 10px 0 0 0;
+      }
+    }
+
+    .confirm-cont {
+      .confirm-description {
+        margin: 10px 0 0 0;
+        color: #bbb;
+      }
+    }
+
+    .details {
+      font-size: 18px;
+      font-weight: 300;
+      margin: 10px 0;
+    }
+
+    .actions {
+      & > span {
+        cursor: pointer;
+        margin-right: 15px;
+        &:last-child { margin-right: 0; }
+      }
+      span.text {
+        margin-left: 2px;
+      }
+    }
+    .comment-actions {
+      margin: 10px 0;
+    }
+
+    .edit-comment {
+      cursor: pointer;
+      margin: 0 10px;
+      color: #bbb;
+      &:hover { color: #000; }
+    }
+  }
+
+}

@@ -1,0 +1,8 @@
+@mixin toggle-arrow {
+  cursor: pointer;
+  color: #757575;
+  width: 1px;
+  display: table-cell;
+  padding: 15px 0 10px 20px;
+  background-color: white;
+}

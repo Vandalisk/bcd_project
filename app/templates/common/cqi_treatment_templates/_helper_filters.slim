@@ -1,0 +1,25 @@
+.helper-filters
+  .title Helps for:
+  .impacts
+    .impact ng-click="filterSelected('')" ng-class="{ selected: selectedFilter == '' }"
+      span All cases
+    .impact ng-click="filterSelected(impact)" ng-repeat="impact in impactTypes" ng-class="{ selected: selectedFilter == impact }"
+      span {{ impact | impactConverter }}
+      .line ng-class="determineColor(impact)"
+  .name-search
+    .name Name:
+    input.search type="text" ng-model="filters.name" maxlength="255" with-cancel-button=true select-on-click=true
+.types-filter
+  span Treatments:
+  .filter
+    .dashed.simple-dropdown data-toggle="dropdown" uib-dropdown-toggle="" {{selected.length > 0 ? (selected | treatmentTypeConverter) : 'All types'}}
+
+    ul.dropdown-menu uib-dropdown-menu="" aria-labelledby="simple-dropdown"
+      p.show-element Show:
+      li ng-click="selectType('')"
+        a.treatment-type ng-class="{ selected: selected == '' }" All types
+        i.mi.black ng-show="selected == ''" done
+      li ng-click="selectType(type)" ng-repeat="type in treatmentTypesFilter"
+        a.treatment-type ng-class="{ selected: selected == type }" {{ type | treatmentTypeConverter }}
+        i.mi.black ng-show="selected == type" done
+    i.mi.green keyboard_arrow_down

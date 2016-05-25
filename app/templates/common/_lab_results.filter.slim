@@ -1,0 +1,14 @@
+
+.lab-results-filter
+  h4 Choose important tests:
+
+  .cf
+    div ng-repeat="group in allCodesInGroups"
+      .lab-results-filter-group
+        label ng-repeat="item in group"
+          input type="checkbox" checklist-model="filteredCodes" checklist-value="item" {{item}}
+
+  .button-cont
+    button.btn.btn-primary data-action="setFilter" Done
+    | &nbsp;
+    button.btn.btn-default data-action="closeFilterDialog" Cancel

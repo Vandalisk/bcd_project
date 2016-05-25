@@ -1,0 +1,11 @@
+
+.popover
+  .arrow
+  .popover-content
+    form role="form" ng-submit="saveDosage()"
+      .form-group
+        p.info Specify dosage:
+        input.form-control style="width: 100px;" type="text" maxlength="255" ng-model="item.data.dosage"
+      .form-group
+        .button-cont.a-center
+          button.btn.btn-primary type="submit" ng-disabled="!item.data.dosage" Ok

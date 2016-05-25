@@ -1,0 +1,11 @@
+.form-group.frequency
+  .form-inline
+    .form-group
+      select.frequency-options.form-control.col-xs-12 name="frequency" ng-model="item.frequency" ng-options="rec.key as rec.name for rec in item.frequencyOptions"
+    .form-group
+      span for
+      input.period.form-control name="period" type="text" maxlength="255" ng-model="item.period" ng-disabled="item.open_ended"
+      span days
+    .form-group
+      input.open-ended.form-control name="open_ended" ng-model="item.open_ended" type="checkbox"
+      span Open-ended

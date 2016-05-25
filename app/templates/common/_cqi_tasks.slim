@@ -1,0 +1,138 @@
+
+.cqi-tasks flex=true layout="column" scroll-y-fix=true
+  .sides
+    .side-2.col-md-6.col-sm-6.col-xs-12 scroll-y=true
+      .score-table
+        .score
+          .score-text My score
+          .score-number-head
+            .current-score {{ user.current_score }}
+            |/ {{ user.total_score }}
+        .big-score-scale
+          .rest-score-scale
+          .current-score-scale ng-style="{'width': getPercentOfScores()}"
+        .item-score ng-if="tasksStatistic.medication_tablets.need > 0"
+          .score-text Medication tablets
+          .score-number {{tasksStatistic.medication_tablets.completed}}/{{tasksStatistic.medication_tablets.need}} ({{getPercentOfTasks('medication_tablets')}})
+          .small-score-scale
+            .line
+            .score-progress ng-style="{'width': getPercentOfTasks('medication_tablets')}"
+        .item-score ng-if="tasksStatistic.medication_injection.need > 0"
+          .score-text Medication injection
+          .score-number {{tasksStatistic.medication_injection.completed}}/{{tasksStatistic.medication_injection.need}} ({{getPercentOfTasks('medication_injection')}})
+          .small-score-scale
+            .line
+            .score-progress ng-style="{'width': getPercentOfTasks('medication_injection')}"
+        .item-score ng-if="tasksStatistic.exercise.need > 0"
+          .score-text Exercises
+          .score-number {{tasksStatistic.exercise.completed}}/{{tasksStatistic.exercise.need}} ({{getPercentOfTasks('exercise')}})
+          .small-score-scale
+            .line
+            .score-progress ng-style="{'width': getPercentOfTasks('exercise')}"
+        .item-score ng-if="tasksStatistic.lifestyle.need > 0"
+          .score-text Lifestyle
+          .score-number {{tasksStatistic.lifestyle.completed}}/{{tasksStatistic.lifestyle.need}} ({{getPercentOfTasks('lifestyle')}})
+          .small-score-scale
+            .line
+            .score-progress ng-style="{'width': getPercentOfTasks('lifestyle')}"
+
+
+    .side-1.col-md-6.col-sm-6.col-xs-12 scroll-y=true
+      .cont-top.subheader
+        .calendar
+          .previous-day ng-click="previousDay()"
+            i.mi keyboard_arrow_left
+          .current-day
+            span.text {{ date.format("DD MMMM") }} {{ isToday ? "(Today)" : "" }}
+          .next-day ng-click="nextDay()"
+            i.mi keyboard_arrow_right
+      div ng-show="tasksCount === 0"
+        .info.cont
+          p
+            b Free day!
+          p
+            | No task scheduled for this date.
+            br
+            span ng-if="newTreatmentsCount === 0"
+              | Have a nice day!
+            span ng-if="newTreatmentsCount > 0"
+              | By the way you have unaccepted treatments.
+              br
+              | Would you like to check them up?
+              br
+              br
+              a ui-sref="patient.cqi_treatments" access="patient" View treatments list
+              a ui-sref="doctor.patients.item.cqi_treatments.list({userId: user.id})" access="doctor" View treatments list
+      .items-list
+        table.healthcare-table.current ng-show="tasksCount > 0"
+          tbody
+            tr.main-data ng-repeat-start="task in tasks"
+              td.arrow ng-click="collapseItem(task);"
+                i.mi {{ task.isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+              td.names
+                p.name {{ task.name }}
+                p.description ng-bind-html="task | dosageAndSchedule | unsafe" ng-show="task.isCollapsed"
+                p.description ng-show="!task.isCollapsed" {{ task.treatment_type }}
+              td
+                .points ng-click="isFutureDate || toggle(task)" ng-class="{ completed: task.is_completed }"
+                  .points-content
+                    span ng-if="!task.is_completed" +
+                    span {{ task.points }}
+            tr.additional-data ng-repeat-end=""
+              td colspan="5"
+                div data-uib-collapse="task.isCollapsed"
+                  table
+                    tbody
+                      tr ng-if="task.treatment_type != 'lifestyle'"
+                        td.icon
+                          i.mi assignment
+                        td.description ng-show="!task.is_completed"
+                          span.abstract-hint Edit values, if you have completed task differently.
+                        td.description ng-show="task.is_completed"
+                          span ng-bind-html="task | dosageAndSchedule | unsafe"
+                      tr
+                        td
+                        td colspan="2"
+                          .input-tables ng-show="!task.is_completed"
+                            table.inputs ng-if="task.treatment_type == 'medication_tablets' || task.treatment_type == 'medication_injection'"
+                              tr.hints
+                                td.abstract-hint.dosage dosage
+                              tr.values
+                                td: input.form-control style="width: 62px;" type="text" maxlength="255" ng-model="task.data.dosage"
+                                td width="4"
+                                td {{ task.data.unit }}
+                            table.inputs ng-if="task.treatment_type == 'exercise'"
+                              tr.hints
+                                td.abstract-hint.dosage count
+                                td width="18"
+                              tr.values
+                                td: input.form-control style="width: 62px;" type="text" maxlength="255" ng-model="task.data.count"
+                                td width="18"
+                                td {{ task.data.condition }}
+                            table.inputs ng-show="task.treatment_type == 'medication_tablets' || task.treatment_type == 'medication_injection'"
+                              tr.hints
+                                td.abstract-hint.dosage bfast
+                                td width="18"
+                                td.abstract-hint.dosage lunch
+                                td width="18"
+                                td.abstract-hint.dosage dinner
+                                td width="18"
+                                td.abstract-hint.dosage b.bed
+                              tr.values
+                                td: input.form-control type="text" maxlength="255" ng-model="task.data.schedule.breakfast"
+                                td width="18"
+                                td: input.form-control type="text" maxlength="255" ng-model="task.data.schedule.lunch"
+                                td width="18"
+                                td: input.form-control type="text" maxlength="255" ng-model="task.data.schedule.dinner"
+                                td width="18"
+                                td: input.form-control type="text" maxlength="255" ng-model="task.data.schedule.bedtime"
+                      tr
+                        td.icon
+                          i.mi description
+                        td.description {{ task.treatmentDescription }}
+                        td width="80"
+        .at-right ng-hide="isFutureDate || allTaskCompleted()"
+          .cont.confirm
+            hr
+            .tasks-count {{(tasks | completedFilter).length}} from {{tasksCount}} confirmed
+            .confirm-all-btn.btn.btn-flat-green ng-click="completeAll()" ng-disabled="isFutureDate" confirm all

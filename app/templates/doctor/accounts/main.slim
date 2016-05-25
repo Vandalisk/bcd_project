@@ -1,0 +1,23 @@
+.sidebar scroll-y-fix=true
+  div ng-include="'/app/templates/common/_sidebar.html'"
+.main flex=true scroll-y=true
+  .accounts-header
+    .links
+      a ui-sref="doctor.accounts.staff" ng-class="{active: pageCaption === 'Staff'}" BCD Staff
+      a ui-sref="doctor.accounts.patients" ng-class="{active: pageCaption === 'Patients'}" Patients
+    .add-user.pull-right
+      i.mi person_add
+    label.filter.pull-right
+      span Filter
+      input type="text" ng-model="filterQuery.filter_fields.$" name="filterQuery" placeholder="by name, PHN, phone..."
+    label.assigned.pull-right ng-show="pageCaption === 'Patients'"
+      input type="checkbox" ng-model="showOnlyAssigned" name="showOnlyAssigned"
+      span Assigned to me
+  .mobile-accounts-header.mobile-only
+    .search ng-class="{'visible': true }"
+      i.mi.md-36.mi-search.pull-right ng-hide="showAccountsSearch" ng-click="toggleAccountsSearch()" search
+      i.mi.md-36.mi-cancel.pull-right ng-show="showAccountsSearch" ng-click="toggleAccountsSearch()" clear
+      input.form-control type="text" ng-show="showAccountsSearch" ng-model="filterQuery.filter_fields.$" placeholder="by name, PHN, phone..."
+      i.mi.md-36.mi-order-link.pull-left ng-hide="showAccountsSearch" ng-click="toggleFiltersModal()" format_line_spacing
+      a ng-hide="showAccountsSearch" {{ orderStr }}
+  div(ui-view)

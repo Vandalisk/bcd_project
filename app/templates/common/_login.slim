@@ -1,0 +1,20 @@
+
+main flex=true scroll-y=true layout="column" layout-align="center"
+  .main
+    .cont
+      .center-form.sm
+        form role="form" ng-submit="login()"
+          .welcome
+            span Welcome to
+            h2 EMR BCDiabetes
+          .form-group
+            input.form-control type="email" placeholder="E-mail" maxlength="255" required=true autofocus=true ng-model="loginForm.email"
+          .form-group
+            input.form-control type="password" placeholder="Password" maxlength="255" required=true ng-model="loginForm.password"
+          .form-group
+            .button-cont
+              button.btn.btn-primary type="submit" ng-disabled="!loginForm.email || !loginForm.password || sending_xhr" Sign in
+          .form-group.fh
+            p.error.text-danger {{ loginForm.error }}
+          .form-group.a-center
+            a ui-sref="forgot_password" Forgot password?

@@ -1,0 +1,10 @@
+
+.sidebar scroll-y-fix=true
+  div ng-include="'/app/templates/common/_sidebar.html'"
+.main flex=true layout="column"
+  .doctor-warning-message access="doctor"
+    .warning-message-text
+      | Working with
+      span.bold  {{ user.full_name }}'s&nbsp;
+      | daily tasks. Please, make changes here from patient's permission.
+  div flex=true layout="column" ng-include="'/app/templates/common/_cqi_tasks.html'"

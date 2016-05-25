@@ -1,0 +1,66 @@
+.treatment-templates-results
+  .no-results.abstract-hint ng-show="treatmentTemplates && treatmentTemplates.length === 0"
+    | No treatment templates yet...
+  .no-results.abstract-hint ng-show="treatmentTemplates && (treatmentTemplates | filter:filters).length === 0"
+    | No templates match search conditions
+.interactive-table.treatment-templates-list ng-show="treatmentTemplates && treatmentTemplates.length > 0"
+  .table ng-repeat="treatmentType in treatmentTypes | filter: selectedTreatmentType" ng-show="(treatmentTemplates | filter: {treatment_type: treatmentType} | filter:filters).length > 0"
+    .table-row
+      .table.table-header
+        .table-row
+          .table-cell.empty
+          .table-cell.treatment-type {{ setTypeHeader(treatmentType) }}
+          .table-cell.power-col Power
+    .table-row.treatment-template ng-repeat="item in treatmentTemplates | filter: {treatment_type: treatmentType} | filter:filters"
+      .table.top-panel
+        .table-row
+          .table-cell.arrow ng-click="collapseItem(item)"
+            i.mi {{ item.isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+          .table-cell.brief-explanation
+            span.treatment-name {{ item.name }}
+            span.treatment-type {{ item.treatment_type | treatmentTypeConverter }}
+            p.error ng-show="item.isCollapsed && item.insurance != 'yes'" {{insuranceTypes[item.insurance]}}
+          .table-cell.impact
+            span ng-class="determineColor(item.impact)" {{ item.impact | impactConverter }}
+          .table-cell.power-col {{ item.power }}
+      .collapse data-uib-collapse="item.isCollapsed"
+        .table.bottom-panel
+          .table-row
+            .table-cell.icon
+              i.mi assignment
+            .table-cell
+              .abstract-hint.fs-14 Default prescription
+              .description {{ item.full_name }}
+            .table-cell
+          .table-row
+            .table-cell.icon
+              i.mi star
+            .table-cell.compliance-hint Points per task: {{ item.points_per_task }}
+            .table-cell
+          .table-row
+            .table-cell.icon
+              i.mi description
+            .table-cell.description
+              .abstract-hint.fs-14 Description
+              p.insurance.error ng-show="item.insurance != 'yes'" {{insuranceTypes[item.insurance]}}
+              span.new-lines-text {{ item.description }}
+            .table-cell
+          .table-row
+            .table-cell.date-icon
+              i.mi history
+            .table-cell.date
+              p Created: {{ item.created_at | date:'yyyy MMM d' }} by {{ item.author_name }}
+              p ng-if="item.editor_name !== null" Edited: {{ item.updated_at | date:'yyyy MMM d' }} by {{ item.editor_name }}
+            .table-cell
+          .table-row access="head"
+            .table-cell
+            .table-cell.web-only
+              .button_accepted
+                .btn.btn-primary-green.text-uppercase ng-click="edit(item)" Edit
+              .button_decline
+                span
+                  .btn.btn-flat-green ng-click="remove(item)"
+                    p
+                      i.mi delete
+                    p Delete
+            .table-cell

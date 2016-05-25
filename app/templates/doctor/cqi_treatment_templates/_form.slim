@@ -1,0 +1,7 @@
+form.treatment-template-form role="form"
+  div ng-include="'/app/templates/doctor/cqi_treatment_templates/_form.header.html'"
+  hr
+  div ng-include="'/app/templates/doctor/cqi_treatment_templates/_form.name.html'" ng-if="options.step === 'name'"
+  div ng-include="'/app/templates/doctor/cqi_treatment_templates/_form.prescription.html'" ng-if="options.step === 'type'"
+  div ng-include="'/app/templates/doctor/cqi_treatment_templates/_form.frequency.html'" ng-if="options.step === 'schedule'"
+  div ng-include="'/app/templates/doctor/cqi_treatment_templates/_form.description.html'"  ng-if="options.step === 'description'"

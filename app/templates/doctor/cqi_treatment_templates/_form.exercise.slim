@@ -1,0 +1,7 @@
+.form
+  .form-group.exercise
+    p.info Set how many and what to do:
+    input.form-control.exercise-count type="text" ng-class="{ error: errors.type.count }" ng-model="item.data.count" maxlength="40"
+    input.form-control.exercise-condition type="text" ng-class="{ error: errors.type.condition }" ng-model="item.data.condition" maxlength="255"
+    p.error ng-show="errors.type.text" {{errors.type.text}}
+    span.help-block Examples: 30 repetitions, 3 rounds,  15 minutes, 1 hour, etc.

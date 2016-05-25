@@ -1,0 +1,14 @@
+.template-info
+  .impact
+    span ng-class="chooseImpactColor(item.impact)" {{item.impact | impactConverter}}
+  .name {{ options.full_name }}
+  .info-power-points ng-if="item.power && options.step === 'description'"
+    .power
+      .title Power -
+      .value.bold {{item.power}}
+    .points-per-task
+      .title Points per task —
+      .value.bold {{options.power_points}}
+    .points-per-month
+      .title Points per month —
+      .value.bold {{options.month_points}}

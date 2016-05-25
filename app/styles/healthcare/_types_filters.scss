@@ -1,0 +1,42 @@
+.types-filter {
+  margin-top: 15px;
+  .filter {
+    display: inline-block;
+    .dashed {
+      display: inline-block;
+      margin-left: 14px;
+      color: #009688;
+      border-bottom: 1px dashed #009688;
+      cursor: pointer;
+    }
+    ul > li > a.selected {
+      font-weight: 600;
+    }
+    .treatment-type {
+      display: inline-block;
+    }
+    i.mi {
+      &.black {
+        color: black!important;
+        top: 7px;
+      }
+      &.green {
+        color: #009688!important;
+      }
+      margin-left: 3px;
+      float: right;
+    }
+  }
+
+  ul.dropdown-menu {
+    p.show-element {
+      padding: 0 0 4px 13px;
+      opacity: 0.63;
+    }
+    li {
+      > a:first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

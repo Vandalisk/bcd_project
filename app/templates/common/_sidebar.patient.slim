@@ -1,0 +1,18 @@
+.cont-nav
+ul.nav.nav-pills.nav-stacked
+  li(ng-class="{active: sidebarActiveItem === 'case_manager'}")
+    a Case Manager
+  li(ng-class="{active: sidebarActiveItem === 'cqi_tasks'}")
+    a(ui-sref="patient.cqi_tasks.list" ui-sref-opts="{reload: true}") Daily Tasks
+  li(ng-class="{active: sidebarActiveItem === 'blood_glucose'}")
+    a(ui-sref="patient.blood_glucose") Blood Glucose
+  li(ng-class="{active: sidebarActiveItem === 'lab_results'}")
+    a(ui-sref="patient.lab_results" ui-sref-opts="{reload: true}") Lab Results
+  li ng-class="{active: sidebarActiveItem === 'dialogs'}"
+    a ui-sref="dialogs.list" ui-sref-opts="{reload: true}"
+      span.text Messages
+      span.badge ng-if="dialogsUnreadCount" {{ dialogsUnreadCount }}
+  li(ng-class="{active: sidebarActiveItem === 'cqi_treatments'}")
+    a(ui-sref="patient.cqi_treatments" ui-sref-opts="{reload: true}") Health Program
+  li(ng-class="{active: sidebarActiveItem === 'education_materials'}")
+    a(ui-sref="patient.education_materials" ui-sref-opts="{reload: true}") Educational Materials

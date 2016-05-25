@@ -1,0 +1,53 @@
+.treatment-form {
+  .dosage .unit, .schedule .time {
+    font-size: 14px;
+    font-style: italic;
+    color: #aaa;
+  }
+
+  .dosage * {
+    display: inline;
+  }
+
+  .schedule {
+    max-width: 250px;
+    margin: 20px 0;
+    .table-row {
+      .table-cell {
+        padding-right: 10px;
+        text-align: center;
+        width: 25%;
+        .time {
+          padding-bottom: 5px;
+        }
+      }
+    }
+
+    select {
+      display: inline-block;
+      width: auto;
+    }
+    input[type="text"] {
+      display: inline-block;
+      width: 60px;
+    }
+    input[type="checkbox"] {
+      display: inline-block;
+    }
+
+    .frequency-options {
+      display: inline;
+      .period {
+        width: 60px;
+      }
+      .open-ended {
+        width: 20px;
+        height: 14px;
+        margin-left: 40px;
+      }
+      &.disabled {
+        color: #ccc;
+      }
+    }
+  }
+}

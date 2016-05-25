@@ -1,0 +1,114 @@
+.no-results ng-show="inactiveTreatments && completedTreatments && completedTreatments.length === 0 && inactiveTreatments.length === 0"
+  | No treatments yet...
+
+.cont.interactive-table interactive-treatments-table="completedTreatments" ng-show="completedTreatments && completedTreatments.length > 0"
+  table.healthcare-table.completed
+    thead
+      tr
+        th
+        th.healthcare-header
+          p Completed
+    tbody
+      tr.main-data ng-repeat-start="item in completedTreatments"
+        td.arrow ng-click="collapseItem(item)"
+          i.mi {{ item.model.isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+        td
+          p ng-show="item.model.isCollapsed" {{ item.name }}: {{ item.full_name }}
+          p ng-show="!item.model.isCollapsed" {{ item.name }}
+      tr.additional-data ng-repeat-end=""
+        td colspan="5"
+          div data-uib-collapse="item.model.isCollapsed"
+            table
+              tbody
+                tr
+                  td
+                  td
+                    .numbers_and_text
+                      .number {{ item.model.complianceRate }}%
+                      .text Complience
+                tr
+                  td.icon
+                    i.mi assignment
+                  td.description
+                    .abstract-hint Previous prescription
+                    p.no-indent {{ item.full_name }}.
+                tr
+                  td.icon
+                    i.mi description
+                  td.description {{ item.description }}
+                tr
+                  td.icon
+                    i.mi history
+                  td.description
+                    .abstract-hint History
+                tr.history_picture_and_text
+                  td.icon
+                    div
+                      span.ava
+                        img ng-src="{{ item.receiver_gravatar_url + '&s=24' }}"
+                  td.state
+                    p {{ item.model.suggestOrRequestBy() }}
+                tr.history_picture_and_text
+                  td.icon
+                    div
+                      span.ava
+                        img ng-src="{{ item.sender_gravatar_url + '&s=24' }}"
+                  td.state
+                    p Accepted: {{ item.model.formattedStartAt() }} by {{ item.model.acceptedByFullName }}
+                tr.history_picture_and_text
+                  td.icon
+                    div
+                      span.ava
+                        img ng-src="{{ item.receiver_gravatar_url + '&s=24' }}"
+                  td.state
+                    p Stopped: {{ item.model.formattedEndAt() }} by {{ item.model.patientFullName }}
+
+.cont.interactive-table interactive-treatments-table="inactiveTreatments" ng-show="inactiveTreatments && inactiveTreatments.length > 0"
+  table.healthcare-table.declined
+    thead
+      tr
+        th
+        th.healthcare-header
+          p Declined & cancelled
+    tbody
+      tr.main-data ng-repeat-start="item in inactiveTreatments"
+        td.arrow ng-click="collapseItem(item)"
+          i.mi {{ item.model.isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+        td
+          p {{ item.name }} {{ item.model.isCollapsed ? ': '+ item.full_name : '' }}
+      tr.additional-data ng-repeat-end=""
+        td colspan="5"
+          div data-uib-collapse="item.model.isCollapsed"
+            table
+              tbody
+                tr
+                  td.icon
+                    i.mi assignment
+                  td.description
+                    .abstract-hint Previous prescription
+                    p.no-indent {{ item.full_name }}.
+                tr
+                  td.icon
+                    i.mi description
+                  td.description {{ item.description }}
+                tr
+                  td.icon
+                    i.mi history
+                  td.description
+                    .abstract-hint History
+                tr.history_picture_and_text
+                  td.icon
+                    div
+                      span.ava
+                        img ng-src="{{ item.receiver_gravatar_url + '&s=24' }}"
+                  td.state
+                    p {{ item.model.suggestOrRequestBy() }}
+                tr.history_picture_and_text
+                  td.icon
+                    div
+                      span.ava
+                        img ng-src="{{ item.sender_gravatar_url + '&s=24' }}"
+                  td.state
+                    p Declined: {{ item.model.formattedDeclinedAt() }} by {{ item.model.declinedByFullName }}
+                    p ng-show="item.doctor_comment"
+                      span.comment "{{ item.doctor_comment }}"

@@ -1,0 +1,62 @@
+.cont.interactive-table interactive-treatments-table="activeTreatments" ng-show="activeTreatments && activeTreatments.length > 0"
+  .clearfix
+    .divider
+    .pull-left.invisible-xs
+      p.hint These treatments appear in patient's Daily Tasks every day. For confirming tasks patient receives points. Compliance is counted every Monday and shows, how thoroughly patient follows Healthcare Plan.
+  table.healthcare-table.current
+    thead
+      tr
+        th
+        th.healthcare-header
+          p Current treatments
+        th.healthcare-header.impact
+        th.healthcare-header.header-power Power
+        th.healthcare-header
+          p Compliance
+    tbody
+      tr.main-data ng-repeat-start="item in activeTreatments"
+        td.arrow ng-click="collapseItem(item); setActiveItem(item)"
+          i.mi {{ item.model.isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+        td.brief-explanation
+          span.treatment-name {{ item.name }}
+          span.treatment-type {{ item.treatment_type | treatmentTypeConverter }}
+          p ng-show="item.model.isCollapsed" {{ item.full_name }}
+        td.impact
+          span ng-class="determineColor(item.impact)" {{ item.impact | impactConverter }}
+        td.power
+          span.power-col {{ item.power }}
+        td.compliance
+          span.compliance-col {{ item.model.complianceRate }}%
+      tr.additional-data ng-repeat-end=""
+        td colspan="5"
+          div data-uib-collapse="item.model.isCollapsed"
+            table
+              tbody
+                tr
+                  td.icon
+                    i.mi assignment
+                  td.description {{ item.full_name }}
+                tr
+                  td.icon
+                    i.mi description
+                  td.description {{ item.description }}
+                tr
+                  td.date-icon
+                    i.mi history
+                  td.date
+                    .pb-10 {{ item.model.suggestOrRequestBy() }}
+                    .pb-10 Started: {{ item.model.formattedStartAt() }} by {{ item.model.acceptedByFullName }}
+                    .pb-10 Ends: {{ item.model.formattedEndAt() }} (in {{ item.model.endsIn() }} days)
+                tr
+                  td
+                  td.buttons
+                    .button_accepted
+                      span data-action="requestchange" access="doctor"
+                        .btn.btn-primary-green Change Prescription
+                      span data-action="requestchange" access="patient"
+                        .btn.btn-primary-green Request Change
+                    .button_decline data-action="cancel"
+                      .btn.btn-flat-green
+                        p
+                          i.mi history
+                        p Stop treatment

@@ -1,0 +1,264 @@
+[treatment-edit] {
+  span {
+    color: $link-color;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+  .popover {
+    p.info {
+      font-size: 14px;
+    }
+    table td {
+      padding: 4px;
+      font-size: 14px;
+      text-align: center;
+    }
+    input {
+      text-align: center;
+    }
+  }
+}
+
+.template-state-panel {
+  margin-bottom: 2px;
+  margin-top: 20px;
+  .state, .state-btn {
+    padding: 7px 10px;
+  }
+  .states{
+    margin-left: 15%;
+    display: inline-block;
+    &.stages {
+      margin-left: 35%;
+
+      .state {
+        padding-bottom: 0;
+      }
+    }
+  }
+  .state {
+    margin: 0;
+    display: inline-block;
+    > input{
+      margin-left: 1rem;
+      cursor: text;
+    }
+    &.active {
+      border-bottom: 3px solid #009688;
+    }
+  }
+  .state-divider {
+    width: 40px;
+    display: inline-block;
+    height: 1px;
+    margin: 0;
+    border-top: 1px solid #b3dfdb;
+    padding: 0;
+  }
+  .state-btn {
+    position: absolute;
+    color: #009688;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: inline-block;
+    &:hover {
+      background-color: #D4D4D4;
+    }
+    &.disabled {
+      color: #9F9F9F;
+      cursor: default;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.treatment-form {
+  &.exercise {
+    .count {
+      max-width: 70px;
+    }
+    .condition {
+      max-width: 600px;
+    }
+  }
+}
+
+.treatment-template-form {
+  .treatment-types {
+    .info {
+      display: inline;
+    }
+    .treatment-type {
+      color: #009688;
+      border-bottom: 1px dashed #009688;
+      margin: 0 20px;
+      &.active {
+        background-color: #E1F2F1;
+        padding: 10px;
+        color: black;
+        border-bottom: none;
+      }
+    }
+  }
+  hr {
+    margin-top: 0;
+  }
+  .centred {
+    margin: 50px auto 90px auto;
+    width: 400px;
+  }
+  .treatment-template-name, .medication, .power-points, .exercise {
+    input.error {
+      border-color: red;
+    }
+  }
+  .prescription {
+    margin: 60px auto 70px 70px;
+  }
+
+  .frequency {
+    margin: 60px auto 0px 70px;
+    .power-point {
+      border-bottom: 1px dashed #009688;
+      font-style: italic;
+      margin-left: 25px;
+    }
+  }
+  .description {
+    margin: 60px auto 70px 70px;
+    span.error {
+      margin-left: 20px;
+      color: red;
+    }
+    .description-field {
+      width: 650px;
+    }
+  }
+  .impact {
+    margin-bottom: 10px;
+    > span {
+      border-radius: 10%;
+      padding: 2px 6px;
+      &.pink {
+        background-color: $pink;
+      }
+      &.light-blue {
+        background-color: $light-blue;
+      }
+      &.salad-green {
+        background-color: $salad-green;
+      }
+      &.liliac {
+        background-color: $liliac;
+      }
+    }
+  }
+  .template-info {
+    margin-bottom: 20px;
+  }
+  .name {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .info-power-points {
+    & {
+      font-size: 16px;
+    }
+    * {
+      display: inline-block;
+    }
+    > * {
+      margin-right: 30px;
+    }
+    .title {
+      margin-right: 5px;
+    }
+  }
+  .help-block {
+    font-style: italic;
+    color: #aaa;
+  }
+  .exercise-count {
+    width: 70px;
+    margin-right: 20px;
+    display: inline-block;
+  }
+  .exercise-condition {
+    max-width: 445px;
+    display: inline-block;
+  }
+  .schedule .frequency-options {
+    display: inline;
+    .period {
+      width: 60px;
+    }
+    .open-ended {
+      width: 20px;
+      height: 14px;
+      margin-left: 40px;
+    }
+    .open-ended-hint {
+      display: inline-block;
+      margin-left: 10px;
+    }
+    &.disabled {
+      color: #ccc;
+    }
+  }
+  .impact-form{
+    margin-top: 30px;
+  }
+  .impact-form, .insurance-form {
+    p.question {
+
+    }
+    label {
+      display: block;
+      margin-left: 5px;
+      margin-top: 8px;
+      font-weight: normal;
+      > input{
+        margin-right: 7px;
+      }
+    }
+    label:after {
+      margin-left: 10px;
+    }
+  }
+  .power-points {
+    margin-top: 30px;
+    .points-table-row {
+      & {
+        display: inline-block;
+        margin: 15px 0 0;
+        width: 330px;
+      }
+      div {
+        display: inline-block;
+      }
+      .value {
+        width: 70px;
+        margin-left: 10px;
+        input {
+          width: inherit;
+        }
+      }
+      .unit {
+        width: 50px;
+      }
+    }
+    .power-points-hint {
+      .info {
+        display: inline-block;
+      }
+    }
+  }
+}

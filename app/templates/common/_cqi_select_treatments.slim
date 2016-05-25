@@ -1,0 +1,68 @@
+.cqi-select-treatments
+  p.requests-header-hint access="patient" Choose treatments to request from the list below
+
+  .cont.interactive-table.healthcare
+    p.requests-header Treatment
+    span.right-header Power
+    .table
+      .table-row.treatment ng-repeat="item in selectedItems | filter:search" ng-class="{ selected: isSelected(item), active: isActive(item) }"
+        .table.top-panel
+          .table-row
+            .table-cell.arrow ng-click="collapseItem(item)"
+              i.mi {{ item.isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+            .table-cell.brief-explanation
+              span.treatment-name {{ item.name }}
+              span.treatment-type {{ item.treatment_type }}
+            .table-cell.impact
+              span ng-class="determineColor(item.impact)" {{ item.impact }}
+            .table-cell.power-col {{ item.power }}
+          .table-row.description
+            .table-cell
+            .table-cell ng-show="item.isCollapsed"
+              i.mi.md-18 ng-show="item.myForm.$dirty" mode edit
+              i.mi.md-18 ng-hide="item.myForm.$dirty" assignment
+              span.full-name compile="item.full_name(true)"
+        .collapse data-uib-collapse="item.isCollapsed"
+          .bottom-panel.table
+            .table-row
+              .table-cell.icon
+                i.mi mode edit
+              .table-cell
+                form.treatment-form.medication name="item.myForm" ng-if="item.treatment_type === 'medication_tablets' || item.treatment_type === 'medication_injection'"
+                  .form-group
+                    p.abstract-hint access="patient" What schedule do you want?
+                    p.abstract-hint access="doctor" Set preferred values
+
+                    div ng-include="'/app/templates/common/partials/_treatment_schedule.html'"
+                    div ng-include="'/app/templates/common/partials/_treatment_frequency.html'"
+                .form.treatment-form.lifestyle ng-if="item.treatment_type === 'lifestyle'"
+                  .form-group {{ item.data.condition }}
+                .form.treatment-form.exercise ng-if="item.treatment_type === 'exercise'"
+                  .form-group
+                    | Count:
+                    input.form-control.count type="text" ng-model="item.data.count"
+                  .form-group
+                    | Condition:
+                    input.form-control.condition type="text" ng-model="item.data.condition"
+            .table-row
+              .table-cell.icon
+                i.mi assignment
+              .table-cell.description
+                p.abstract-hint Default prescription
+                | {{ item.full_name(false) }}
+
+            .table-row
+              .table-cell.icon
+                i.mi description
+              .table-cell.description
+                .abstract-hint Add individual recommendations to description
+                p.insurance.error ng-show="item.insurance != 'yes'" {{item.insurance | insuranceConverter}}
+                textarea.form-control.animate ng-model="item.patient_comment" style="min-height: 54px; max-width: 600px; width: calc(100% - 20px);" msd-elastic="\n" access="patient"
+                textarea.form-control.animate ng-model="item.description" placeholder="Free text recommendations, tips and advices. Not necessary to save or prescribe treatment." style="min-height: 54px; max-width: 600px; width: calc(100% - 20px);" msd-elastic="\n" access="doctor"
+            .table-row
+              .table-cell.icon
+                i.mi star
+              .table-cell.compliance-hint Till the end of trial study:
+            .table-row
+              .table-cell
+              .table-cell.compliance-number up to {{ item.calculatedPoints }} points

@@ -1,0 +1,21 @@
+.educational_materials {
+  margin: 20px;
+  a.in_top {
+    color: rgb(0, 0, 255);
+  }
+
+  .diabetes_title, .thyroid_title {
+    font-family: 'Open Sans Semibold', 'Open Sans';
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+    color: #4C4C4C;
+    margin-top: 47px;
+    margin-bottom: 10px;
+  }
+  .diabet_link, .thyroid_link {
+    margin-top: 10px;
+    text-decoration: underline;
+    color: #0D806C;
+  }
+}

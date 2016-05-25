@@ -1,0 +1,57 @@
+.btn-primary-green, .btn-flat-green {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary-green {
+  text-transform: uppercase;
+  padding: 5px 16px 5px 16px;
+  color: white;
+  background-color: $light-green;
+}
+
+.btn-primary-green:hover,
+.btn-primary-green:focus,
+.btn-primary-green:active,
+.btn-primary-green.active {
+  color: #ffffff;
+  background-color: $primary-green;
+}
+
+.btn-flat-green {
+  padding: 3.5px 10px;
+  color: $light-green;
+}
+
+.btn-flat-green p {
+  padding: 0 0 0 5px;
+  display: inline-block;
+}
+
+.btn-flat-green i {
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.btn-flat-green:hover,
+.btn-flat-green:focus,
+.btn-flat-green:active,
+.btn-flat-green.active {
+  color: $primary-green;
+  background-color: $grey-12;
+}
+
+td.buttons {
+  padding: 38px 0 15px 0;
+
+  .button_accepted { display: inline-block; }
+
+  .button_decline {
+    display: inline-block;
+  }
+}
+
+.middle-button {
+  margin-top: 20px;
+  text-align: center;
+}

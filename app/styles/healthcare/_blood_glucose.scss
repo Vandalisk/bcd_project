@@ -1,0 +1,71 @@
+.blood-glucose {
+  .header {
+    margin: 20px;
+    h2 {
+      margin: 10px 0 0 0;
+      font-family: 'Open Sans Semibold', 'Open Sans';
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  .bg-table {
+    border: 1px solid #000000;
+    margin: 20px 20px 20px 0;
+    table-layout: fixed;
+    &.fixedcol {
+      margin: 20px 0 20px 20px;
+      width: 80px;
+    }
+    &.datacols {
+      width: calc( 100% - 120px );
+    }
+    .viewport {
+      overflow: auto;
+    }
+    .bg-row {
+      display: table-row;
+      &:nth-child(odd) {
+        background-color: #FFFFFF;
+      }
+      &:nth-child(even) {
+        background-color: #F7F7F7;
+      }
+      &:first-child .bg-cell {
+        border-bottom: 1px solid #000000;
+      }
+      .bg-cell {
+        padding: 5px;
+        display: table-cell;
+        height: 50px;
+        min-width: 60px;
+        border-right: 1px solid #FFFFFF;
+        cursor: pointer;
+        &:nth-child(2) {
+          margin-left: 60px;
+        }
+        &:hover {
+          background-color: #F0F9F8;
+        }
+      }
+    }
+    .ppp {
+      position: absolute;
+      top: 50px;
+      padding: 4px;
+      background-color: white;
+      z-index: 10;
+      box-shadow: 0 0 3px rgba(0,0,0,0.7);
+      width: 130px;
+      a {
+        display: inline-block;
+        padding: 10px;
+        & > * {
+          float: left;
+        }
+        .mi-label {
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}

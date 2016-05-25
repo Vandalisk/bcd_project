@@ -1,0 +1,39 @@
+
+.center-form {
+  margin: 0 auto;
+  .welcome {
+    text-align: center;
+    color: #269984;
+    span {
+      font-size: 1em;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin: 0.3em 0 1em;
+    }
+  }
+
+  p {
+    padding: 0;
+    margin: 0 0 10px;
+  }
+
+  .fh {
+    height: 35px;
+  }
+
+  .button-cont {
+    text-align: center;
+  }
+
+  .error {
+    text-align: center !important;
+  }
+
+  &.sm {
+    max-width: 300px;
+  }
+  &.lg {
+    max-width: 600px;
+  }
+}

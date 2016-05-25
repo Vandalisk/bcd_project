@@ -1,0 +1,100 @@
+
+.sidebar scroll-y-fix=true
+  div ng-include="'/app/templates/common/_sidebar.html'"
+.main.light flex=true scroll-y=true ng-class="{'active-patient-main': isActivePatient(user)}"
+  .cont
+    .panel.panel-grey.info
+      .panel-heading
+        .toggle-panel
+          i.fa.fa-chevron-up toggle-panel-dashboard=true
+        .panel-heading-caption Patient Info
+        .panel-heading-buttons
+      .panel-body
+        .user-info
+          .ava
+            img ng-src="{{ user.gravatar_url + '&s=75' }}"
+          .info
+            div {{ user.full_name }}
+            div {{ user.birthday | date: "yyyy/MM/dd" }}
+            div {{ user.email }}
+            div {{ user.phone }}
+          .info
+            .inner-info
+              div Current score:
+              span.current-score {{ user.current_score }}
+              span
+                | / {{ user.total_score }}
+    .panel.panel-grey.cqi
+      .panel-heading
+        .toggle-panel
+          i.fa.fa-chevron-up toggle-panel-dashboard=true
+        .panel-heading-caption ng-hide="isActivePatient(user)" CQI
+        .panel-heading-caption ng-show="isActivePatient(user)" ui-sref="doctor.patients.item.cqi_treatments.list" CQI
+        .panel-heading-buttons
+          div ng-show="isActivePatient(user)"
+            button.btn ui-sref="doctor.patients.item.cqi_treatments.list({new: '1'})" Suggest treatment
+      .panel-body
+        .no-results ng-show="requestedTreatments && activeTreatments && requestedTreatments.length == 0 && activeTreatments.length === 0"
+          | No treatments yet...
+        .cont ng-show="requestedTreatments && requestedTreatments.length > 0"
+          h1.head Requested treatments
+          table.info-table
+            thead
+              tr
+                th Date
+                th Treatment
+            tbody
+              tr ng-repeat="item in requestedTreatments"
+                td.date {{ item.created_at | date: "yyyy/MM/dd" }}
+                td {{ item.name }}
+        .cont ng-show="activeTreatments && activeTreatments.length > 0"
+          h1.head Active treatments
+          table.info-table
+            thead
+              tr
+                th Start Date
+                th Treatment Prescription
+                th Progress
+            tbody
+              tr ng-repeat="item in activeTreatments"
+                td.date {{ item.date_start | date: "yyyy/MM/dd" }}
+                td {{ item.full_name }}
+                td.progress {{ item.completion_percent | number:2 }}%
+
+    .panel.panel-grey.lab
+      .panel-heading
+        .toggle-panel
+          i.fa.fa-chevron-up toggle-panel-dashboard=true
+        .panel-heading-caption ng-hide="isActivePatient(user)" Lab Results
+        .panel-heading-caption.pointer ng-show="isActivePatient(user)" ui-sref="doctor.patients.item.lab_results" Lab Results
+
+      .panel-body
+        .no-results ng-hide="labResults.labResultsCount > 0"
+          b Unfortunately, laboratory tests are not done yet
+
+        .lab-results-table ng-show="labResults.labResultsCount > 0"
+          .wrap-lab-test.dashboard
+            div ag-grid="labResults.gridOptions" style="height: 100%" class="lab-results-grid ag-fresh" ng-if="dataLoaded"
+
+          .wrap-mobile-version
+            p.title Diabetes & Thyroid
+            div
+              .full-screen-table toggle-full-table-lab-results=true
+                i.fa.fa-table.f16
+                span Open table in fullscreen
+              p.last-test Last test: {{labResults.lastTestDate.getFullYear()}}/{{("0" + (labResults.lastTestDate.getMonth() + 1)).slice(-2)}}/{{("0" + labResults.lastTestDate.getDate()).slice(-2)}}
+              .abnormal-tests
+                .header
+                  i.fa.fa-exclamation-triangle.red
+                  span Has abnormal test results
+                .body
+                  ul
+                    li ng-repeat="(key, value) in labResults.abnormalTests" {{key}}: {{value}}
+
+    .panel.panel-grey.nurse
+      .panel-heading
+        .toggle-panel
+          i.fa.fa-chevron-up toggle-panel-dashboard=true
+        .panel-heading-caption Diabetes Nurse
+      .panel-body
+        .no-results Coming soon...

@@ -1,0 +1,24 @@
+.blood-glucose-modal {
+  padding: 10px 20px;
+  .modal-container {
+    .daytime, .input-header {
+      margin: 20px 0;
+    }
+    input {
+      width: 100px;
+      margin-right: 15px;
+      display: inline-block;
+      &.ng-invalid {
+        border: 1px solid #ff0000;
+      }
+    }
+  }
+  .blood-glucose-modal-buttons {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    .submit-btn, .cancel-btn {
+      display: inline;
+    }
+  }
+}

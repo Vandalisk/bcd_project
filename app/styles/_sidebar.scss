@@ -1,0 +1,188 @@
+
+main {
+  .wrap {
+    .sidebar {
+      .cont {
+        margin: 0;
+        padding: 0;
+      }
+      .cont-nav {
+        padding-top: 50px;
+        padding-bottom: 30px;
+      }
+      ul.nav {
+        > li > a {
+          border-radius: 0;
+          font-size: 14px;
+          padding: 10px 10px;
+          font-family: Open Sans Regular, Open Sans;
+          .badge {
+            float: right;
+          }
+        }
+        >li > span {
+          font-size: 14px;
+          cursor: default;
+        }
+        >li .ava {
+          padding-right: 10px;
+          img { border-radius: 15px; }
+        }
+      }
+
+      &.open {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: block;
+        z-index: 2000;
+        background-color: $primary-bg-color;
+        height: 100%;
+        width: 250px;
+        overflow-y: auto;
+      }
+
+      hr {
+        border-color: darken($primary-bg-color, 13%);
+        margin: 10px 15px;
+      }
+
+      .cont-modal {
+        display: none;
+      }
+      &.open {
+        border-right: 1px solid $navbar-default-border;
+        .cont-modal {
+          display: block;
+
+          .cont-user-info {
+            width: 100%;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+          }
+
+          .user-info {
+            height: 50px;
+            margin: 0 auto;
+            line-height: 50px;
+            .ava {
+              padding: 0 10px;
+              img { border-radius: 15px; }
+            }
+            .name {
+              font-size: 1.1em;
+              line-height: 1.5em;
+              padding: 15px 10px 0 0;
+            }
+          }
+
+          .menu-header {
+            border-color: $navbar-default-border;
+            border-style: solid;
+            color: $navbar-default-color;
+            background-color: $navbar-default-bg;
+            border-width: 1px 0;
+
+            width: 100%;
+            height: 50px;
+            background-color: $brand-primary;
+            .cont-user-info {
+              color: $navbar-default-color;
+              background-color: $navbar-default-bg;
+            }
+
+
+            .cont-search {
+              display: table;
+              width: 100%;
+              border: none;
+              height: $header-height;
+              position: static;
+              margin: -1px 0;
+
+              > ul {
+                list-style-type: none;
+                display: table-row;
+                > li {
+                  display: table-cell;
+                  height: $header-height;
+                  vertical-align: middle;
+                  white-space: nowrap;
+                  > a {
+                    text-decoration: none;
+                    display: block;
+                    height: $header-height;
+                    line-height: $header-height - 5px;
+                    padding: 0 10px;
+                    border-top: 1px solid transparent;
+                    border-bottom: 1px solid transparent;
+
+                    color: $navbar-default-link-color;
+                    &:hover, &:focus {
+                      color: $navbar-default-link-hover-color;
+                      background-color: $navbar-default-link-hover-bg;
+                    }
+                  }
+                  &.search {
+                    background-color: $navbar-default-link-active-bg;
+                    display: none;
+                    form {
+                      margin: 0;
+                      height: 50px;
+                    }
+                    input {
+                      height: auto;
+                    }
+                  }
+                  &.search.open {
+                    display: table-cell;
+                  }
+                  &.active > a {
+                    &, &:hover, &:focus {
+                      color: $navbar-default-link-active-color;
+                      background-color: $navbar-default-link-active-bg;
+                    }
+                  }
+                  .tt-dropdown-menu {
+                    margin-top: -1px;
+                    margin-right: -1px;
+                    padding: 0;
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                    border-top-color: #e5e5e5;
+                  }
+                }
+              }
+            }
+
+          }
+
+        }
+      }
+    }
+  }
+}
+
+hr {
+  width: 100%;
+  margin-left: 0!important;
+  background-color: #009688;
+  height: 0.5px;
+}
+
+body.menu-open {
+  position: fixed;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar {
+  .typeahead-opened {
+    input {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

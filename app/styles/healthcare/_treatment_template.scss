@@ -1,0 +1,28 @@
+.treatment-templates-list {
+  word-break: normal;
+  .table-header {
+    background-color: #f7f7f7;
+    padding-top: 40px;
+    .empty {
+      width: 65px;
+    }
+  }
+  .treatment-type {
+    width: 600px;
+  }
+  .power-col {
+    width: 100px;
+    padding: 20px 0 20px 20px;
+  }
+}
+
+.treatment-type-filter {
+  width: inherit;
+  margin-left: 20px;
+  display: inline;
+}
+.treatment-templates-results {
+  .no-results {
+    margin: 8% 30%;
+  }
+}

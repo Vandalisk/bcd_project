@@ -1,0 +1,12 @@
+.form.prescription
+  div ng-include="'/app/templates/doctor/cqi_treatment_templates/_form.template_info.html'"
+  .form-group.treatment-types
+    p.info Treatment type:
+    a.treatment-type ng-class="{ active: fn.isActiveTreatmentType('medication_tablets') }" ng-click="fn.selectTreatmentType('medication_tablets')" Medication(tabs)
+    a.treatment-type ng-class="{ active: fn.isActiveTreatmentType('medication_injection') }" ng-click="fn.selectTreatmentType('medication_injection')" Medication(injection)
+    a.treatment-type ng-class="{ active: fn.isActiveTreatmentType('exercise') }" ng-click="fn.selectTreatmentType('exercise')" Exercise
+    a.treatment-type ng-class="{ active: fn.isActiveTreatmentType('diet') }" ng-click="fn.selectTreatmentType('diet')" Diet
+    a.treatment-type ng-class="{ active: fn.isActiveTreatmentType('lifestyle') }" ng-click="fn.selectTreatmentType('lifestyle')" Other lifestyle
+  .form-group
+    div ng-if="item.treatment_type"
+      div ng-include="'/app/templates/doctor/cqi_treatment_templates/_form.' + item.treatment_type + '.html'"

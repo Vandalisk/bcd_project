@@ -1,0 +1,11 @@
+.treatment-schedule
+  .dosage access="doctor"
+    input.form-control type="text" name="dosage" maxlength="255" ng-model="item.data.dosage"
+    .unit {{item.data.unit}}
+  .table.schedule
+    .table-row
+      .table-cell ng-repeat="name in ['bfast', 'lunch', 'dinner', 'b.bed']"
+        .time {{ name }}
+    .table-row
+      .table-cell ng-repeat="key in ['breakfast', 'lunch', 'dinner', 'bedtime']"
+        input.form-control type="number" name="{{key}}" maxlength="255" ng-model="item.data.schedule[key]"

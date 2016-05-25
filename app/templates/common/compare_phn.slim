@@ -1,0 +1,12 @@
+form role="form" ng-submit="checkPHN(phn)" ng-if="!passwordForm"
+  p
+    | Hello, {{ user.first_name }}!
+    br
+    | Please, confirm your PHN number(9 digits):
+  .form-group
+    input.form-control placeholder="Your PHN" maxlength="11" required=true ng-model="phn"
+  .form-group
+    .button-cont
+      button.btn.btn-primary type="submit" ng-disabled="phn.length < 9" Confirm
+  .form-group
+    p.error.text-danger {{ error }}

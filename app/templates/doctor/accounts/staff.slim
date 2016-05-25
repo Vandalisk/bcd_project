@@ -1,0 +1,38 @@
+.fixedblock.mobile-only ng-show="showFiltersModal"
+  i.mi.md-24.mi-cancel.pull-right.z-indexed ng-click="toggleFiltersModal()" clear
+  .filters
+    | Sort by:
+    .form-group-sm
+      input ng-click="order('full_name')" type="radio" value="full_name" id="order_name" ng-model="predicate"
+      label for="order_name" Name
+    .form-group-sm
+      input ng-click="order('role')" type="radio" value="role" id="order_role" ng-model="predicate"
+      label for="order_role" Role
+.cont.no-results ng-if="!staff" flex=true layout="vertical" layout-align="center center"
+  .preloader
+.cont.no-results ng-if="staff.length === 0" flex=true layout="vertical" layout-align="center center"
+  | No users...
+.cont.accounts-container ng-show="staff && staff.length > 0"
+  .table.accounts-list
+    .table-row.table-header
+      .table-cell.ava
+      .table-cell.name ng-click="order('full_name')" ng-class="{'active-order': predicateIsActive('full_name')}"
+        span Name
+        span.sort-order ng-class="{reverse: reverse, visible: predicateIsActive('full_name')}"
+      .table-cell.role ng-click="order('role')" ng-class="{'active-order': predicateIsActive('role')}"
+        span Role
+        span.sort-order ng-class="{reverse: reverse, visible: predicateIsActive('role')}"
+      .table-cell.actions
+    .table-row.account ng-repeat="user in staff | orderBy : predicate : reverse | filter: filterQuery" data-id="{{ user.id }}"
+      .table-cell.ava
+        a ui-sref="doctor.doctors.item.dashboard({userId: user.id })"
+          .ava: img ng-src="{{ user.avatar + '&s=32' }}"
+      .table-cell.name
+        a.name-link ui-sref="doctor.doctors.item.dashboard({userId: user.id })" {{ user.full_name }}
+        .mobile-only
+          | {{ user.role }}
+      .table-cell.role.web-only
+        | {{ user.role }}
+      .table-cell.actions
+        a ui-sref="dialogs.item({ receiverId: user.id })"
+          i.mi message

@@ -1,0 +1,25 @@
+main .main .cont .cont.interactive-table.healthcare {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.healthcare_plan_tabs,
+.healthcare_plan,
+.requests-table {
+  i:hover { color: black; }
+  .mi { font-size: 24px; }
+}
+
+td.buttons, .request-send-buttons {
+  padding: 38px 0 15px 0;
+}
+
+.button_accepted { display: inline-block; }
+
+.button_decline {
+  padding-left: 40px;
+  display: inline-block;
+  @media only screen and (max-width : 768px) {
+    padding-left: 0;
+  }
+}

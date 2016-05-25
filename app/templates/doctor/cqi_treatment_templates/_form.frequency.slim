@@ -1,0 +1,30 @@
+.form.frequency
+  .form-group.schedule
+    div ng-include="'/app/templates/doctor/cqi_treatment_templates/_form.template_info.html'"
+    p.info Specify weekly schedule and course's duration:
+    | Do task &nbsp;
+    select.form-control ng-model="item.frequency" ng-options="rec.key as rec.name for rec in options.frequencyOptions"
+    div.frequency-options ng-class="{ disabled: item.open_ended }"
+      | &nbsp; for &nbsp;
+      input.form-control.period type="text" maxlength="255" ng-model="item.period" select-on-click=true ng-disabled="item.open_ended"
+      | &nbsp; days
+      input.form-control.open-ended type="checkbox" ng-model="item.open_ended"
+      | Open-ended
+      span.open-ended-hint.help-block
+        | (do tasks until treatment is stopped)
+  .form-group.power-points
+    .power-points-hint
+      .info Power determines, how many points patient can receive per month.
+      a.power-point pplink="" What are points?
+    .points-table-row
+      div Set treatment's power (1-10):
+      .value
+        input.form-control ng-class="{ error: errors.schedule.input }" type="text" maxlength="255" ng-model="item.power"  select-on-click=true
+    .points-table-row
+      .title Points per task —
+      .value.bold {{ options.power_points }}
+    .points-table-row
+      p.error {{ errors.schedule.input }}
+    .points-table-row
+      .title Points per month —
+      .value.bold {{ options.month_points }}

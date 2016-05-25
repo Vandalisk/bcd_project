@@ -1,0 +1,24 @@
+.sidebar scroll-y-fix=true
+  div ng-include="'/app/templates/common/_sidebar.html'"
+.main flex=true scroll-y=true ng-controller="CqiTreatmentsListTabsController"
+  .cont-top.healthcare_plan_tabs
+    ul
+      li.tab ng-class="{ active: isSet(1) }" ng-click="setTab(1)"
+        .icon
+          i.mi assignment
+        p.hidden-xs Current
+      li.tab ng-class="{ active: isSet(2) }" ng-click="setTab(2)"
+        .icon
+          i.mi history
+        p.hidden-xs History
+  .cont.healthcare_plan ng-show="isSet(1)"
+    div ng-include="'/app/templates/common/_cqi_treatments.current.html'"
+    .middle-button
+      .btn.btn-primary-green ui-sref="{{currentUser.role === 'patient' ? 'patient.cqi_health_program.list' : 'doctor.patients.item.cqi_health_program'}}"
+        /TODO refator this part, maybe service with roles and corresponding actions
+        /e.g. actions['doctor'] = 'suggest', actions['patient'] = 'request'
+        div access="doctor" Suggest treatment
+        div access="patient" Request treatment
+  .cont.healthcare_plan ng-show="isSet(2)"
+    div ng-include="'/app/templates/common/_cqi_treatments.history.html'"
+

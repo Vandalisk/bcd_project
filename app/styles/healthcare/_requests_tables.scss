@@ -1,0 +1,237 @@
+.requests-header {
+  padding: 0 0 5px 65px;
+  display: inline-block;
+  &.power {
+    margin-right: 140px;
+  }
+}
+
+.requests-table {
+  font-size: 14px;
+
+  > .table-row {
+    border-bottom: 2px solid $main-bg;
+  }
+  .table-row {
+    .bottom-panel {
+      margin-bottom: 20px;
+      .table-row {
+        .table-cell {
+          padding: 23px 0 10px 0;
+          &.icon {
+            padding: 20px 0 0 20px;
+          }
+          &.description {
+            width: 621px;
+          }
+        }
+        .compliance-number {
+          padding-top: 0;
+        }
+      }
+    }
+    .table-cell {
+      padding: 0 0 10px 20px;
+      display: table-cell;
+      background-color: white;
+      &.icon {
+        vertical-align: top;
+        padding: 20px 0 0 20px;
+        background-color: white;
+        width: 65px;
+      }
+    }
+    .table-cell.arrow-right {
+      padding-right: 15px;
+    }
+    .table-cell.arrow {
+      cursor: pointer;
+      padding-top: 15px;
+      color: #757575;
+      width: 1px;
+      display: table-cell;
+    }
+  }
+}
+
+.requests-table tbody tr {
+  &.main-data {
+    border-bottom: 0;
+
+    td {
+      padding-bottom: 0;
+
+      &.arrow, &.arrow-right {
+        cursor: pointer;
+        padding-top: 15px;
+        color: $grey-54;
+        width: 1px;
+      }
+
+      &.arrow-right {
+        padding-right: 15px;
+      }
+
+      &.arrow:hover { color: black; }
+    }
+  }
+}
+
+.main-data p {
+  &.name {
+    font-size: 14px;
+    font-weight:bold;
+  }
+
+  &.description {
+    font-style: italic;
+    color: $grey-38;
+  }
+}
+
+
+.requests-table tbody tr {
+  &.additional-data {
+    td {
+      padding-top: 0;
+      padding-left: 0;
+
+      &.icon {
+        vertical-align: top;
+        padding: 20px 0 0 20px;
+        background-color: white;
+        width: 65px;
+      }
+
+      &.description {
+        width: 621px;
+        padding-top: 23px;
+        .comment {
+          padding-top: 0px;
+          white-space: pre-line;
+        }
+      }
+
+      &.compliance-hint {
+        padding-top: 23px;
+      }
+
+      .abstract-hint {
+        padding-top: 0;
+        text-align: left;
+      }
+      .suggest-treatment-form {
+        table {
+          font-style: italic;
+          text-align: center;
+          color: #aaa
+        }
+      }
+    }
+  }
+}
+
+.additional-data {
+  font-size: 14px;
+
+  i:hover {
+    color: $grey-54;
+  }
+}
+
+.compliance-number {
+  font-size: 22px;
+}
+
+.requests-top-container {
+  padding: 7px 20px 7px 0;
+  background-color: white;
+  line-height: 40px;
+
+  .bbbb {
+    margin-left: 20px;
+    margin-bottom: 5px;
+    hr {
+      margin-top: 0;
+      bottom: 2px;
+    }
+    .help-block {
+      display: inline-block;
+      width: 585px;
+      line-height: 20px;
+      font-style: italic;
+    }
+    .selected-treatments {
+      display: inline-block;
+      float: right;
+    }
+  }
+}
+
+.requests-search {
+  padding: 20px 0 0 20px !important;
+}
+
+p.requests-header-hint {
+  font-size: 12px;
+  font-style: italic;
+  width: 808px;
+  color: $grey-54;
+  word-wrap: break-word;
+  padding: 34px 0 0 20px;
+}
+
+.chosen-treatments {
+  button {
+    display: inline-block;
+    line-height: 24px;
+    margin-left: 45px;
+  }
+  @media only screen and (max-width : 768px) {
+    position: fixed;
+    bottom: -61px;
+    z-index: 100;
+    border-top: 1px solid black;
+    background-color: white;
+    width: 100%;
+    padding: 10px 20px;
+    transition: all 0.5s ease;
+    &.visible {
+      bottom: 0;
+      .btn-primary-green {
+        margin-left: 20px;
+      }
+    }
+    button {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-top: 3px;
+    }
+  }
+}
+
+.request-send-buttons {
+  padding-left: 90px;
+}
+
+.total-compliance-info {
+  padding: 0 0 0 90px;
+}
+
+#main-container .green-circle {
+  background-color: $primary-green;
+  .daw {
+    color: white;
+  }
+}
+
+.circle {
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.arrow-right .mi {
+  padding: 3px;
+}

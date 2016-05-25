@@ -1,0 +1,89 @@
+// Grey colours
+$grey-12: #e0e0e0;
+$grey-26: #bdbdbd;
+$grey-38: #9e9e9e;
+$grey-54: #757575;
+$grey-87: #212121;
+
+// Green colours
+$primary-green: #009688;
+$light-green: #00BFA5;
+$green-6: #f0f9f8;
+$green-12: #e0f2f1;
+$green-30: #b2dfdb;
+$green: #00695c;
+
+// Impact colours
+// pink
+$pink: #ffcccc;
+// light blue
+$light-blue: #d2dcf0;
+// light green
+$salad-green: #d6f5d6;
+// lilac
+$liliac: #e6cce6;
+
+$border-radius-base: 0 !default;
+
+// $primary-bg-color: #b8e6de !default;
+$primary-bg-color: #b2dfdb !default;
+
+// $hover-bg-color: #e5fffa !default;
+// $hover-bg-color: lighten(#b2dfdb, 15%) !default;
+$hover-bg-color: #e0f2f1 !default;
+
+$body-bg: $primary-bg-color !default;
+// $brand-primary: #2db39c !default; // was #428bca
+$brand-primary: $primary-green !default; // was #428bca
+
+// $icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
+
+$sidebar-width: 180px;
+$total-max-width: 1180px;
+$header-height: 50px;
+
+$component-active-color: #fff !default; // default
+$component-active-bg:    $brand-primary !default; // default
+
+
+
+// Basics of a navbar
+$navbar-margin-bottom:  0 !default;
+$navbar-border-radius:  0 !default;
+$navbar-default-color:  #fff !default; // was #777
+$navbar-default-bg:     $brand-primary !default; // was #f8f8f8
+$navbar-default-border: darken($navbar-default-bg, 6.5%) !default; // default
+
+// Navbar links
+$navbar-default-link-color:        #fff !default; // was #777
+$navbar-default-link-hover-color:  $hover-bg-color !default; // was #333
+$navbar-default-link-hover-bg:     transparent !default; // default
+$navbar-default-link-active-color: $primary-bg-color !default; // was #555
+$navbar-default-link-active-bg:    darken($navbar-default-bg, 6.5%) !default; // default
+
+// Navbar brand label
+$navbar-default-brand-hover-color: $hover-bg-color !default; // was darken($navbar-default-brand-color, 10%) !default;
+
+// Dropdown, typeahead
+$dropdown-link-hover-color:  #333; //was darken($gray-dark, 5%) !default;
+$dropdown-link-hover-bg:     $hover-bg-color; //was #f5f5f5 !default;
+// $dropdown-link-hover-color: $component-active-color !default; //was $component-active-color !default;
+// $dropdown-link-hover-bg:    $component-active-bg !default; //was $component-active-bg !default;
+
+// $dropdown-link-active-color: $component-active-color !default; //was $component-active-color !default;
+// $dropdown-link-active-bg:    $component-active-bg !default; //was $component-active-bg !default;
+
+$nav-link-hover-bg: $hover-bg-color !default; // was $gray-lighter !default;
+
+$main-bg: #f7f7f7;
+$input-border-focus: #999;
+$info-table-border-radius: 4px;
+
+$badge-bg: $brand-primary !default; // was $gray-light !default;
+
+
+$border-role-admin: #2196f3 !default;
+$border-role-doctor: #2196f3 !default;
+$border-role-patient: #4caf50 !default;
+
+// 0 1 2 3 4 5 6 7 8 9 a b c d e f

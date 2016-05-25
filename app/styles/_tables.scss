@@ -1,0 +1,25 @@
+.table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: white;
+
+  .table {
+    background-color: transparent;
+    margin-bottom: 0;
+  }
+  .icon {
+    vertical-align: top;
+    padding: 20px 0 0 20px;
+    width: 45px;
+  }
+  .table-row {
+    display: table-row;
+    width: 100%;
+
+    .table-cell {
+      display: table-cell;
+    }
+  }
+}

@@ -1,0 +1,237 @@
+
+.health-program {
+
+  .subheader {
+    &.active { display: block; }
+    @media (max-width: 768px) {
+      &.active { display: none; }
+      &.active-sm { display: block; }
+    }
+  }
+
+  .main-table {
+    margin-top: 20px;
+  }
+
+  .new-cqi-treatment, .cqi-select-treatments {
+    .brief-explanation {
+      width: 500px;
+      .treatment-name {
+        font-weight: 600;
+        font-size: 16px;
+      }
+      .treatment-type {
+        font-style: italic;
+        color: #9e9e9e;
+        margin-left: 10px;
+      }
+    }
+    .impact {
+      width: 185px;
+      > span {
+        border-radius: 10%;
+        padding: 2px 6px;
+        &.pink {
+          background-color: $pink;
+        }
+        &.light-blue {
+          background-color: $light-blue;
+        }
+        &.salad-green {
+          background-color: $salad-green;
+        }
+        &.liliac {
+          background-color: $liliac;
+        }
+      }
+    }
+    .power-col {
+      left: 40px;
+      font-size: 16px;
+      font-weight: bolder;
+    }
+  }
+
+  .cqi-select-treatments {
+    .right-header {
+      float: right;
+      margin-right: 146px;
+    }
+    .table-row.description {
+      span.full-name {
+        bottom: 4px;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .sides {
+    .side-1, .side-2 {
+      vertical-align: top;
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+    .side-1 {
+      width: 66.66%;
+    }
+    .side-2 {
+      width: 33.33%;
+      &.active {
+        border-left: 1px solid #dedede;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .side-1, .side-2  {
+        width: 100%;
+        &.active {
+          display: none;
+          border-left: 1px solid transparent;
+        }
+        &.active-sm {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .subheader {
+    @media (max-width: 768px) {
+      .cont-search {
+        width: 100%;
+      }
+    }
+  }
+
+  .cont-bottom.subfooter {
+    border-top: 1px solid #ccc;
+    display: none;
+    @media (max-width: 768px) {
+      &.active-sm { display: block; }
+    }
+  }
+
+  .items-list {
+    padding-bottom: 20px;
+    .item {
+      width: 100%;
+      padding: 5px 20px;
+
+      .inner {
+        cursor: pointer;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        height: 50px;
+        button {
+          width: 50px;
+          height: 50px;
+          margin: -1px;
+          padding: 0;
+          color: $primary-bg-color;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          .fa {
+            line-height: 50px;
+            font-size: 2em;
+          }
+          &:hover {
+            background-color: darken(#fff, 3%);
+            color: darken($primary-bg-color, 3%);
+          }
+        }
+        .name, .type {
+          color: #333;
+          padding-left: 10px;
+          @include ellipsis();
+        }
+        .name {
+          font-size: 1.3em;
+        }
+        .type {
+          font-size: 14px;
+          color: #999;
+          &:first-letter {
+            text-transform: capitalize;
+          }
+        }
+        .arrow {
+          .fa {
+            line-height: 50px;
+            padding: 0 10px;
+            font-size: 0.7em;
+            color: #777;
+          }
+        }
+      }
+
+      &.active {
+        background-color: #ddd;
+      }
+      &.selected {
+        .inner {
+          background-color: #cfefde;
+          border: 1px solid darken(#cfefde, 30%);
+          button {
+            background-color: #cfefde;
+            border-color: darken(#cfefde, 30%);
+            color: $brand-primary;
+            &:hover {
+              background-color: darken(#cfefde, 3%);
+              color: darken($brand-primary, 3%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .items-details {
+    .back {
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    @media (max-width: 768px) {
+      .back {
+        display: none;
+      }
+    }
+
+    .name {
+      font-size: 1.2em;
+      padding: 0;
+    }
+
+    .type {
+      padding-bottom: 10px;
+      color: #999;
+      &:first-letter {
+        text-transform: capitalize;
+      }
+    }
+
+    .row {
+      padding: 15px 0;
+      margin: 0;
+      border-bottom: 1px solid #dedede;
+      &:last-child { border-bottom: none; }
+      &:first-child { padding-top: 0; }
+
+      p.description {
+        margin: 10px 0 0 0;
+      }
+    }
+
+    .button-cont {
+      margin: 25px 0 0 0;
+    }
+  }
+
+  .suggest-treatment-form {
+    margin-top: 13px;
+  }
+}

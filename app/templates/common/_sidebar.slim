@@ -1,0 +1,43 @@
+.cont-modal
+  div access="patient"
+    .menu-header
+      .cont-user-info ui-sref="patient.home"
+        .user-info
+          .ava
+            img ng-src="{{ currentUser.gravatar_url + '&s=30' }}"
+          .name
+            | {{ currentUser.full_name }}
+  div access="doctor"
+    .menu-header
+      .cont-search
+        ul toggle-search=true
+          li.search ng-class="{open: showSearch}"
+            form.navbar-form.search-form role="search"
+              .form-group.has-feedback
+                input.form-control type="text" placeholder="Type here to search" maxlength="255" autocomplete-search-users=true autofocus=true tpl="sidebar.users"
+                i.mi.md-18.fa-search.form-control-feedback
+          li ng-hide="showSearch" access="doctor" toggle-search-open=true
+            a style="text-align: center;"
+              span.text style="font-style: italic; padding-right: 10px;"
+                | Search for patients
+              i.mi.fa.fa-search search
+          li.active ng-show="showSearch" access="doctor" toggle-search-close=true
+            a
+              i.fa.fa-times
+    .cont-user-info ui-sref="doctor.accounts"
+      .user-info
+        .ava
+          img ng-src="{{ currentUser.gravatar_url + '&s=30' }}"
+        .name
+          | {{ currentUser.full_name }}
+div ng-if="sidebar"
+  div ng-include="'/app/templates/common/_sidebar.' + sidebar + '.html'"
+.cont-modal
+  hr ng-if="sidebar"
+  ul.nav.nav-pills.nav-stacked
+    li
+      a ui-sref="profile" ui-sref-opts="{reload: true}"
+        | Edit My Profile
+    li
+      a ng-click="logout()" ui-sref-opts="{reload: true}"
+        | Logout

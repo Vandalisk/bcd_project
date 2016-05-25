@@ -1,0 +1,56 @@
+.helper-filters {
+  margin-top: 5px;
+  * {
+    display: inline-block;
+  }
+  .impacts {
+    margin: 0 10px;
+    .impact {
+      height: 35px;
+      border: 1px solid rgba(117,117,117, .5);
+      background-color: #fff;
+      .line {
+        position: absolute;
+        height: 4px;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        &.pink {
+          background-color: $pink;
+        }
+        &.light-blue {
+          background-color: $light-blue;
+        }
+        &.salad-green {
+          background-color: $salad-green;
+        }
+        &.liliac {
+          background-color: $liliac;
+        }
+      }
+      &:hover {
+        background-color: transparent;
+      }
+      &.selected{
+        background-color: rgb(224, 224, 224);
+        &:hover {
+          background-color: transparent;
+        }
+      }
+      span {
+        padding: 0 10px;
+        top: 6px;
+      }
+    }
+  }
+  .name-search {
+    float: right;
+    .name {
+      margin-right: 15px;
+    }
+    input {
+      height: 35px;
+      width: 220px;
+    }
+  }
+}

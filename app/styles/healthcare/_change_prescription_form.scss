@@ -1,0 +1,111 @@
+.change-prescription {
+  font-size: 12px;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0px;
+
+  th { font-weight: normal; }
+
+  td {
+    padding: 0 0 10px 38px;
+    background-color: white;
+
+    &.indent-inputs-table { padding: 16px 0 0 0 }
+  }
+
+  > tbody > tr { border-bottom: 2px solid white; }
+}
+
+table.inputs {
+  td {
+    padding: 0;
+
+    &.tabs-input, &.dosage {
+      padding-top: 22px;
+    }
+
+    &.dosage {
+      padding-left: 5px;
+    }
+  }
+}
+
+.change-prescription tbody tr {
+  &.additional-data {
+    td {
+      padding-top: 0;
+      padding-left: 0;
+
+      &.header {
+        padding: 19px 0 0 0;
+        span {
+          bottom: 7px;
+          font-weight: 600;
+          font-size: 16px;
+        }
+      }
+
+      &.main-name {
+        padding-bottom: 0;
+        .treatment-name{
+          padding-top: 14px;
+          font-weight: 600;
+          font-size: 16px;
+        }
+        .treatment-type{
+          font-style: italic;
+          color: #9e9e9e;
+          margin-left: 10px;
+        }
+      }
+
+      &.icon {
+        vertical-align: top;
+        padding: 20px 0 0 20px;
+        background-color: white;
+        width: 65px;
+      }
+
+      &.text-area {
+        width: 621px;
+        padding-top: 20px;
+      }
+
+      &.description {
+        padding-top: 23px;
+      }
+
+      &.description-hint {
+        color: $grey-38;
+        padding-top: 20px;
+      }
+
+      &.full_name {
+        padding: 0;
+      }
+    }
+  }
+  &.inputs-table {
+    .icon i {
+      bottom: 72px;
+      right: 18px;
+    }
+  }
+}
+
+td.change-prescription-send-buttons {
+  padding: 10px 0 50px 0;
+}
+
+.hints {
+  text-align: center;
+  line-height: 20px;
+}
+
+.modal-prescription-form-dialog {
+  max-width: 740px;
+  width: calc(100% - 20px);
+  .abstract-hint {
+    font-size: 14px;
+  }
+}

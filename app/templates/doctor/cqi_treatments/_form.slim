@@ -1,0 +1,34 @@
+form.treatment-form treatment-form=true
+  div treatment-form-header=true
+
+  .form-group
+    p.info Choose treatment:
+    input.form-control type="text" maxlength="255" ng-model="options.search" placeholder="e.g. Metformin, Push-ups" autocomplete-treatment-templates-names=true select-on-click=true
+
+  .form-group
+    p.info Preview:
+    p.lead ng-bind-html="options.full_name_small_html | unsafe" treatment-edit="item"
+  .form-group
+    .form-inline
+      .form-group style="width: 100%;"
+        | Specify weekly schedule and course's duration:
+      .form-group
+        | Do it &nbsp;
+        select.form-control ng-model="item.frequency" ng-options="rec.key as rec.name for rec in options.frequencyOptions"
+        | &nbsp; for &nbsp;
+        input.form-control style="width: 60px;" type="text" maxlength="255" ng-model="item.period"
+        | &nbsp; days
+  .form-group
+    p.info Description:
+    textarea.form-control.animate ng-model="item.description" placeholder="Free text recommendations, tips and advices. Not necessary to save or prescribe treatment." style="min-height: 54px;" msd-elastic=true
+    p.info style="padding-top: 20px; color: #999;"
+      | It's always possible to edit dosage, schedule and commentary before suggesting treatment to patient.
+  .form-group
+    .button-cont
+      button.btn.btn-primary type="button" ng-disabled="!(item.frequency && item.period) || sending_xhr" ng-click="submit()"
+        | {{ options.caption.submit }}
+  .form-group
+    p.error.text-danger
+      span ng-repeat="error in errors"
+        | {{ error }}
+        br

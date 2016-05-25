@@ -1,0 +1,176 @@
+
+.dialogs {
+
+  .subheader {
+    &.active { display: block; }
+    @media (max-width: 768px) {
+      &.active { display: none; }
+      &.active-sm { display: block; }
+    }
+  }
+
+  .sides {
+    .side-1, .side-2 {
+      vertical-align: top;
+      display: none;
+    }
+    .side-1 {
+      width: 33.33%;
+      &.active { display: block; }
+    }
+    .side-2 {
+      width: 66.66%;
+      &.active {
+        border-left: 1px solid #dedede;
+        display: flex;
+      }
+      @media (min-width: 768px) {
+        .dialog-interlocutor-name {
+          min-height: 44px;
+          max-height: 44px;
+          line-height: 30px;
+          width: 100%;
+          text-align: center;
+          font-size: 16px;
+          padding: 10px;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      .side-1, .side-2  {
+        width: 100%;
+        &.active {
+          display: none;
+          border-left: 1px solid transparent;
+        }
+      }
+      .side-1.active-sm  { display: block; }
+      .side-2.active-sm  { display: flex; }
+      .side-2 .dialog-interlocutor-name {
+        display: none;
+      }
+    }
+  }
+
+  .subheader {
+    @media (max-width: 768px) {
+      .cont-search {
+        width: 100%;
+      }
+    }
+  }
+
+  .items-list {
+    padding-bottom: 20px;
+    .caption {
+      padding: 15px 25px 10px 25px;
+      visibility: hidden;
+      &.visible {
+        visibility: visible;
+      }
+    }
+    .no-results {
+      padding: 15px 25px 10px 25px;
+    }
+    .item {
+      width: 100%;
+      padding: 5px 20px;
+
+      .inner {
+        cursor: pointer;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        height: 50px;
+        .ava {
+          line-height: 48px;
+          padding: 0 10px;
+          img {
+            border-radius: 15px;
+          }
+        }
+        .name {
+          font-size: 1.3em;
+          color: #333;
+          @include ellipsis();
+        }
+        .message {
+          padding: 0 3px;
+          @include ellipsis();
+          .from {
+            padding-right: 5px;
+            font-weight: bold;
+            color: $brand-primary;
+            font-size: 12px;
+          }
+          &.unread {
+            background-color: $hover-bg-color;
+          }
+        }
+        .counter {
+          line-height: 48px;
+          padding: 0 0 0 5px;
+        }
+        .arrow {
+          .fa {
+            line-height: 50px;
+            padding: 0 10px;
+            font-size: 0.7em;
+            color: #777;
+          }
+        }
+        &.role-admin { border-left: 3px solid $border-role-admin; }
+        &.role-doctor { border-left: 3px solid $border-role-doctor; }
+        &.role-patient { border-left: 3px solid $border-role-patient; }
+      }
+
+      &.active {
+        background-color: #ddd;
+      }
+    }
+  }
+
+  .dialog-messages-list {
+    background-color: #fff;
+    border-bottom: 1px solid #efefef;
+    .item {
+      padding: 5px 10px 0 10px;
+      .ava {
+        width: 40px;
+        padding-right: 10px;
+        img {
+          border-radius: 15px;
+        }
+      }
+      .name {
+        font-size: 1.3em;
+        padding-top: 2px;
+        padding-bottom: 5px;
+      }
+      .date {
+        color: #777;
+      }
+      .date, .text {
+        padding: 5px 0;
+      }
+
+      &.short {
+        padding: 0 10px 0 50px;
+        .ava, .name { display: none; }
+      }
+      &.unread {
+        background-color: $hover-bg-color;
+      }
+    }
+  }
+
+  .dialog-form {
+    .button-cont {
+      margin: 0;
+      padding: 0;
+      padding-left: 10px;
+    }
+  }
+
+}

@@ -1,0 +1,20 @@
+.form.centred.treatment-template-name
+  .form-group
+    p.info What is treatment name?
+    input.form-control ng-class="{ error: errors.name.input }" type="text" maxlength="255" ng-model="item.name"
+    p.error {{errors.name.input}}
+  .form-group.impact-form
+    p What problem does it solve?
+    label
+      input type="radio" ng-model="item.impact" value="high_a1c"
+      | High A1c
+    label
+      input type="radio" ng-model="item.impact" value="cholesterol/apob"
+      | Cholesterol / apoB
+    label
+      input type="radio" ng-model="item.impact" value="high_blood_pressure"
+      | High blood pressure
+    label
+      input type="radio" ng-model="item.impact" value="other"
+      | Other
+    p.error {{errors.name.radio}}

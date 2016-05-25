@@ -1,0 +1,36 @@
+.frequency {
+  margin-top: 24px;
+  margin-bottom: 4px;
+
+  .frequency-options {
+    margin-right: 10px;
+  }
+
+  .period {
+    width: 60px;
+    margin: 0 10px;
+  }
+
+  .open-ended {
+    width: 20px;
+    margin-left: 120px;
+  }
+  input, select {
+    width: inherit;
+  }
+  @media only screen and (max-width : 768px) {
+    & * {
+      display: inline-block;
+      margin: 5px 0;
+      line-height: 34px;
+    }
+    .frequency-options {
+      margin: 0 10px 0 0;
+    }
+    .open-ended {
+      margin: 10px;
+      height: 20px;
+      vertical-align: middle;
+    }
+  }
+}

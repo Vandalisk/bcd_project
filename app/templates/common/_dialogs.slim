@@ -1,0 +1,48 @@
+.dialogs flex=true layout="column" scroll-y-fix=true
+  .sides flex=true layout="row" scroll-y-fix=true
+    .side-1.active scroll-y=true ng-class="{'active-sm': currentState.state.name === states().list}"
+      .items-list
+        .cont-search
+          input.search.form-control type="text" ng-model="data.search" placeholder="Start dialog with?.." maxlength="255" with-pncel-button=true select-on-click=true
+          i.fa.fa-search
+          i.fa.fa-times.cancel ng-click="data.search = ''" ng-hide="!data.search"
+        .caption ng-class="{visible: (data.search && filteredDialogs.length > 0)}" ng-hide="filteredDialogs.length === 0 || !data.search"
+          | Search Results:
+        .no-results ng-show="filteredDialogs.length === 0"
+          | No users found
+        .item ng-repeat="item in filteredDialogs" ng-class="{active: isActive(item)}"
+          .inner class="role-{{ item.role }}" layout="row" ng-click="toggleActiveItem(item)"
+            .ava
+              img ng-src="{{ item.gravatar_url + '&s=30' }}"
+            div flex=true layout="column" layout-align="center start"
+              .name {{ item.full_name }}
+              .message ng-if="item.message" ng-class="{unread: item.unread_messages_count > 0}"
+                span.from ng-if="item.message.sender_id === currentUser.id" You:
+                span.text {{ item.message.text }}
+            .arrow
+              i.fa.fa-chevron-right
+
+    .side-2 scroll-y-fix=true layout="column" ng-if="activeItem && currentState.state.name === states().item" ng-class="{'active': currentState.state.name === states().item, 'active-sm': currentState.state.name === states().item}"
+      .dialog-interlocutor-name ng-show="activeItem"
+        | {{ activeItem.full_name }}
+      .dialog-messages-list flex=true layout="column" layout-align="end" dialog-messages-list=true scroll-y-fix=true
+        .cont.no-results ng-if="!messages" flex=true layout="vertical" layout-align="center center"
+          .preloader
+        .cont.no-results ng-if="messages && messages.length === 0" flex=true layout="vertical" layout-align="center center"
+          | No messages yet
+        .cont ng-show="messages && messages.length > 0" scroll-y=true
+          div ng-repeat="item in messages"
+            .item class="{{ item.css_class }}" layout="row" ng-class="{unread: !item.is_read, mine: item.is_mine}" data-id="{{ item.id }}"
+              .ava
+                img ng-src="{{ item.sender_gravatar_url + '&s=30' }}"
+              div flex=true layout="column"
+                .name {{ item.sender_full_name }}
+                div layout="row"
+                  .text flex=true {{ item.text }}
+                  .date {{ item.formatted_date }}
+      .dialog-form.cont
+        form layout="row" ng-submit="submit()"
+          div flex=true
+            input.form-control type="text" ng-model="data.text" placeholder="Write message here..."
+          .button-cont
+            button.btn.btn-primary type="submit" ng-disabled="!data.text || sending_xhr" Send

@@ -1,0 +1,15 @@
+
+.sidebar scroll-y-fix=true
+  div ng-include="'/app/templates/common/_sidebar.html'"
+.main flex=true layout="column" layout-align="center" scroll-y=true
+  .cont
+    .center-form.sm.a-center
+      .patient-home ng-show="newTreatmentsCount > 0"
+        .cont
+          | New treatments are suggested for you!
+        button.btn.btn-primary ui-sref="patient.cqi_treatments"
+          | View suggested treatments
+        .cont
+          p
+            a ui-sref="patient.cqi_tasks.list"
+              | I'll check them later

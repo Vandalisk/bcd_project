@@ -1,0 +1,17 @@
+.modal-points-hint {
+  .modal-content {
+    width: 450px;
+    height: 400px;
+    border-radius: 0;
+    margin: auto;
+  }
+  .points-hint-text {
+    margin: 20px;
+    .button-decline {
+      float: right;
+      margin: 50px 10px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+  }
+}

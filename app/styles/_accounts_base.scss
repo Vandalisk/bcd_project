@@ -1,0 +1,244 @@
+.accounts-header {
+  @media (max-width: 768px) {
+    display: none;
+  }
+  width: 100%;
+  background-color: #FFFFFF;
+  & > * {
+    display: inline-block;
+    padding: 10px;
+  }
+  label span {
+    font-weight: 400;
+  }
+  .links {
+    margin-left: 75px;
+    a {
+      display: inline-block;
+      color: #009688;
+      text-decoration: underline;
+      padding: 3px 10px;
+      margin: 0 5px;
+      &.active {
+        background-color: #009688;
+        color: #333333;
+        text-decoration: none;
+      }
+    }
+  }
+  .assigned {
+    margin-right: 50px;
+    input, span {
+      line-height: 24px;
+      vertical-align: middle;
+    }
+    input {
+      margin: 0 10px;
+    }
+    span {
+
+    }
+  }
+  .filter {
+    padding: 5px;
+    input {
+      height: 34px;
+      padding: 6px 12px;
+      &::-webkit-input-placeholder {
+        font-style: italic;
+      }
+      &::-moz-placeholder {
+        font-style: italic;
+      }
+      &:-moz-placeholder {
+        font-style: italic;
+      }
+      &:-ms-input-placeholder {
+        font-style: italic;
+      }
+    }
+    span {
+      margin: 0 10px;
+    }
+  }
+  .add-user {
+    padding: 10px;
+    margin: 0 20px 0 30px;
+  }
+}
+
+.mobile-accounts-header {
+  @media (max-width: 768px) {
+    display: block;
+    height: 56px;
+    padding: 10px;
+    background-color: white;
+    input {
+      width: calc(100% - 50px);
+      display: inline;
+      transition: none;
+      height: 36px;
+    }
+  }
+}
+
+.accounts-container {
+  width: 100%;
+  @media (max-width: 768px) {
+    padding: 0 !important;
+  }
+
+  .table.accounts-list {
+    margin-bottom: 30px;
+    table-layout: fixed;
+    background-color: #F5F5F5;
+    @media (max-width: 768px) {
+      margin-top: 10px;
+    }
+    .table-row.table-header {
+      border-bottom: 10px solid #f5f5f5;
+      @media (max-width: 768px) {
+        display: none;
+      }
+      .table-cell {
+        &.name, &.requested, &.compliance, &.role {
+          span {
+            cursor: pointer;
+          }
+        }
+        &.ava {
+          width: 70px;
+        }
+        &.role {
+          width: 150px;
+        }
+        .sort-order {
+          visibility: hidden;
+          &.visible {
+            visibility: visible;
+          }
+          font-size: 12px;
+          &:after {
+            content: '\25b2';
+          }
+          &.reverse:after {
+            content: '\25bc';
+          }
+        }
+        span {
+          color: #009688;
+          border-bottom: 1px dashed;
+        }
+        &.active-order span {
+          color: #555555;
+        }
+      }
+      .actions {
+        width: 32px;
+      }
+    }
+
+    .table-row.account {
+      background-color: #FFFFFF;
+      border-bottom: 10px solid #F5F5F5;
+      .table-cell {
+        padding: 10px 0;
+      }
+      .table-cell:first-child {
+        padding-left: 10px;
+      }
+      .table-cell:last-child {
+        padding-right: 10px;
+      }
+      .ava {
+        width: 70px;
+        img {
+          border-radius: 16px;
+        }
+      }
+      .name {
+        .name-link {
+          color: #333;
+          font-size: 16px;
+          font-weight: bold;
+          &:hover {
+            color: #333;
+          }
+        }
+      }
+      .requested-date {
+        font-family: 'Open Sans Italic', 'Open Sans';
+        font-style: italic;
+        font-size: 14px;
+        color: #848484;
+        line-height: 20px;
+        display: inline-block;
+        padding-right: 20px;
+      }
+      .requested {
+        .requested-str {
+          display: inline-block;
+        }
+      }
+      .compliance {
+
+      }
+      .role {
+        font-weight: bold;
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+      .actions {
+        width: 32px;
+        i {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.web-only {
+  display: none !important;
+  @media (min-width: 768px) {
+    display: block !important;
+    &.table-cell {
+      display: table-cell !important;
+    }
+  }
+}
+
+.mobile-only {
+  display: none !important;
+  @media (max-width: 768px) {
+    display: block !important;
+  }
+}
+
+.fixedblock {
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+    padding: 130px 0 0 20px;
+    position: fixed;
+    width: 100%;
+    top: -56px;
+    height: calc(100% + 56px);
+    z-index: 100;
+    background-color: #ffffff;
+  }
+  .mi-cancel {
+    margin-right: 15px;
+  }
+  .filters {
+    .form-group-sm {
+      input {
+        margin: 20px 10px;
+      }
+      &.assigned-filter-group {
+        margin-top: 20px;
+      }
+    }
+  }
+}

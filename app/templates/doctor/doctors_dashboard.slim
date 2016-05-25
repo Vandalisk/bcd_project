@@ -1,0 +1,17 @@
+
+.sidebar scroll-y-fix=true
+  div ng-include="'/app/templates/common/_sidebar.html'"
+.main flex=true scroll-y=true
+  .cont
+    .panel.panel-grey.info
+      .panel-heading
+        .panel-heading-caption Doctor Info
+      .panel-body
+        .user-info
+          .ava
+            img ng-src="{{ user.gravatar_url + '&s=75' }}"
+          .info
+            div {{ user.full_name }}
+            div {{ user.birthday | date: "yyyy/MM/dd" }}
+            div {{ user.email }}
+            div {{ user.phone }}

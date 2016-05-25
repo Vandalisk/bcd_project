@@ -1,0 +1,17 @@
+.treatment-temlates-list {
+  .text {
+    display: inline-block;
+    width: 595px;
+    font-weight: 400;
+    font-style: italic;
+  }
+  button.create {
+    float: right;
+    font-size: 16px;
+    padding: 7px 17px;
+    text-transform: uppercase;
+    background-color: #00bfa5;
+    border: 0;
+    font-weight: 600;
+  }
+}

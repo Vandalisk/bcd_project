@@ -1,0 +1,68 @@
+table.change-prescription.treatment-form
+  tbody
+    tr.additional-data
+      td
+      td.header
+        span Change prescription?
+      td
+    tr
+      td colspan='2'
+        div style="border-bottom: 1px solid rgba(0, 150, 136, 1)"
+    tr.additional-data
+      td
+      td.main-name
+        span.treatment-name {{ item.name }}
+        span.treatment-type {{ item.treatment_type }}
+      td
+    tr.additional-data
+      td.icon
+        i.mi assignment
+      td.description-hint Current prescription
+      td
+    tr.additional-data
+      td
+      td.full_name {{ item.full_name }}
+      td
+    tr.inputs-table
+      td.icon
+        i.mi create
+      td.indent-inputs-table ng-show="item.treatment_type === 'medication_tablets' || item.treatment_type === 'medication_injection'"
+        table.inputs
+          tr
+            td colspan="3"
+              p.abstract-hint access="doctor" Set new prescription
+              p.abstract-hint access="patient" What schedule you want?
+
+        div ng-include="'/app/templates/common/partials/_treatment_schedule.html'"
+        div ng-include="'/app/templates/common/partials/_treatment_frequency.html'"
+
+      td
+    tr.additional-data access="doctor"
+      td.icon
+        i.mi description
+      td.text-area
+        textarea.form-control.animate ng-model="item.description" placeholder="Take your medicine in time, according to prescrition. Control how do you feel. In case of negative symptoms, contact your Case Manager. If you changed dosage or schedule — please, correct values before confirmation." style="min-height: 84px;" msd-elastic="\n"
+      td
+    tr.additional-data access="patient"
+      td.icon
+        i.mi description
+      td.description
+        | {{ item.description }}
+      td
+    tr.additional-data access="patient"
+      td.icon
+        i.mi comment
+      td.text-area
+        textarea.form-control.animate ng-model="item.patient_comment" placeholder="Write your comment if you want" style="min-height: 84px;" msd-elastic="\n"
+      td
+    tr
+      td
+      td.change-prescription-send-buttons
+        .button_accepted
+          .btn.btn-primary-green ng-click="submit()" ng-disabled="formDisabled"
+            .btn_content access="patient" request
+            .btn_content access="doctor" suggest
+        .button_decline
+          .btn.btn-flat-green ng-click="cancel()" Cancel
+        p.abstract-hint access="doctor" If suggested — current treatment will be moved to history and new request will be sent to patient for approval.
+        p.abstract-hint access="patient" If requested — current treatment will be moved to history and new request will be sent to doctor for review.

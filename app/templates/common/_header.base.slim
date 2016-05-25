@@ -1,0 +1,49 @@
+.sidebar
+  a.logo ui-sref="home"
+.main
+  .navbar-mobile
+    ul
+      li.back
+        a ng-if="allowHistoryBack()" ng-click="goHistoryBack()"
+          i.mi.md-30 arrow_back
+      li.caption ng-hide="pageCaption === 'Patients' || pageCaption === 'Staff'"
+        span {{ pageCaption }}
+      li.caption ng-class="{'links-container': pageCaption === 'Patients' || pageCaption === 'Staff'}"
+        span.caption-links
+          a ui-sref="doctor.accounts.staff" ng-class="{selected: pageCaption === 'Staff'}" BCD Staff
+          a ui-sref="doctor.accounts.patients" ng-class="{selected: pageCaption === 'Patients'}" Patients
+      li.menu
+        a toggle-menu=true
+          i.mi.md-30 menu
+  .navbar
+    ul toggle-search=true
+      li.holder access="patient"
+      li.active-patient ng-show="activePatient.id && !showSearch" ui-sref="doctor.patients.item.dashboard({userId: activePatient.id})" access="doctor"
+      li.search access="doctor" ng-class="{open: showSearch}"
+        .for_search_form
+          form.navbar-form.search-form role="search"
+            .form-group.has-feedback
+              input.form-control type="text" placeholder="Type here to search" maxlength="255" autocomplete-search-users=true autofocus=true tpl="header.users"
+              i.mi.md-18.fa-search.form-control-feedback search
+        .active ng-show="showSearch" toggle-search-close=true
+          span.mi.cross clear
+      li.user-menu.dropdown ng-controller="DropdownCtrl"
+        a.dropdown-toggle
+          .current_user
+            span.ava
+              img ng-src="{{ currentUser.gravatar_url + '&s=30' }}"
+            span.text.user-name {{ currentUser.full_name | limitTo:'30' }}
+        span.mi.md-36.mi-keyboard-arrow-down.simple-dropdown uib-dropdown-toggle="" data-toggle="dropdown" keyboard_arrow_down
+
+        ul.dropdown-menu uib-dropdown-menu="" aria-labelledby="simple-dropdown"
+          li access="doctor"
+            a ng-click="openCqiTasksExportDialog()" Export CQI to CSV
+          li
+            a ui-sref="profile" Edit My Profile
+          li
+            a ng-click="logout()" Logout
+      li.search-form-wrapper ng-hide="showSearch" access="doctor" toggle-search-open=true style="float: right;"
+        a
+          span.text
+            | Search for patients or create new profile
+          i.mi.md-36.mi-search search

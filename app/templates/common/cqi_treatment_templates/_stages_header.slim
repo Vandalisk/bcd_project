@@ -1,0 +1,14 @@
+.form-group.template-state-panel
+  .state-btn.back ng-show="stage === 2" ng-click="back()" Back
+  .states.stages
+    .state ng-class="{ active: stage === 1 }"
+      | 1. Choose treatments
+    .state ng-class="{ active: stage === 2 }"
+      | 2. Set prescription
+  .pull-right
+    button.btn.btn-primary.text-uppercase type="button" ng-show="stage === 2" access="doctor" ng-disabled="sending_xhr" ng-click="submit()"
+      | Suggest
+    button.btn.btn-primary.text-uppercase type="button" ng-show="stage === 2" access="patient" ng-disabled="sending_xhr" ng-click="submit()"
+      | Request
+    button.btn.btn-primary.text-uppercase type="button" ng-show="stage === 1" ng-disabled="selectedItems.length < 1" ng-click="toForm()"
+      | Next

@@ -1,0 +1,18 @@
+.form
+  .form-group.description
+    div ng-include="'/app/templates/doctor/cqi_treatment_templates/_form.template_info.html'"
+    .form-group.insurance-form
+      p.question
+        | Is it covered by BC Pharmacare?
+        span.error {{errors.description.radio}}
+      label ng-repeat="(key, value) in insuranceTypes"
+        input type="radio" ng-model="item.insurance" ng-value="key"
+        | {{value}}
+
+    p.info Write general description:
+    .description-field
+      textarea.form-control.animate rows="4" ng-model="item.description" msd-elastic=true
+    span.help-block
+      | This field is not required for template.
+      br
+      | You can add custom recommendations while suggesting treatments to patient.

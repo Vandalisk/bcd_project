@@ -1,0 +1,68 @@
+.fixedblock.mobile-only ng-show="showFiltersModal"
+  i.mi.md-24.mi-cancel.pull-right.z-indexed ng-click="toggleFiltersModal()" clear
+  .filters
+    | Sort by:
+    .form-group-sm
+      input ng-click="order('treatments.length')" type="radio" value="treatments.length" id="order_treatments" ng-model="predicate"
+      label for="order_treatments" Requested treatments
+    .form-group-sm
+      input ng-click="order('full_name')" type="radio" value="full_name" id="order_name" ng-model="predicate"
+      label for="order_name" Name
+    .form-group-sm
+      input ng-click="order('compliance_rate')" type="radio" value="compliance_rate" id="order_compliance" ng-model="predicate"
+      label for="order_compliance" Compliance (last week)
+    .form-group-sm.assigned-filter-group
+      input type="checkbox" name="showOnlyAssigned" id="filter_my" ng-model="showOnlyAssigned"
+      label for="filter_my" Assigned to me
+.cont.no-results ng-if="!patients" flex=true layout="vertical" layout-align="center center"
+  .preloader
+.cont.no-results ng-if="patients.length === 0" flex=true layout="vertical" layout-align="center center"
+  | No users...
+.cont.accounts-container ng-show="patients && patients.length > 0"
+  .table.accounts-list
+    .table-row.table-header
+      .table-cell.ava
+      .table-cell.name ng-click="order('full_name')" ng-class="{'active-order': predicateIsActive('full_name')}"
+        span Name
+        span.sort-order ng-class="{reverse: reverse, visible: predicateIsActive('full_name')}"
+      .table-cell.requested ng-click="order('treatments.length')" ng-class="{'active-order': predicateIsActive('treatments.length')}"
+        span Requested treatments
+        span.sort-order ng-class="{reverse: reverse, visible: predicateIsActive('treatments.length')}"
+      .table-cell.compliance ng-click="order('compliance_rate')" ng-class="{'active-order': predicateIsActive('compliance_rate')}"
+        span Compliance (last week)
+        span.sort-order ng-class="{reverse: reverse, visible: predicateIsActive('compliance_rate')}"
+      .table-cell.actions
+    .table-row.account ng-repeat="patient in filteredPatients | orderBy : predicate : reverse | filter: filterQuery" data-id="{{ patient.id }}"
+      .table-cell.ava
+        a ui-sref="doctor.patients.item.dashboard({userId: patient.id, active: active })"
+          .ava: img ng-src="{{ patient.avatar + '&s=32' }}"
+        .requested-date.mobile-only ng-show="patient.treatments.length > 0"
+          | {{ patient.last_date }}
+      .table-cell.name
+        a.name-link ui-sref="doctor.patients.item.dashboard({userId: patient.id, active: active })" {{ patient.full_name }}
+        .mobile-only {{ patient.compliance_rate }}% compliance
+        .mobile-only
+          .requested-str
+            span ng-hide="patient.treatments.length > 0"
+              | No requests
+            a ui-sref="doctor.patients.item.cqi_treatments.list({userId: patient.id })" ng-show="patient.treatments.length > 0"
+              /span requested-treatments-on-dashboard=true treatments="patient.treatments"
+              | {{ requestedTreatmentsOnDashboard(patient) }}
+      .table-cell.requested.web-only
+        span
+          .requested-date ng-show="patient.treatments.length > 0"
+            | {{ patient.last_date }}
+          .requested-str
+            span ng-hide="patient.treatments.length > 0"
+              | No requests
+            a ui-sref="doctor.patients.item.cqi_treatments.list({userId: patient.id })" ng-show="patient.treatments.length > 0"
+              /span requested-treatments-on-dashboard=true patient="patient"
+              | {{ requestedTreatmentsOnDashboard(patient) }}
+
+      .table-cell.compliance.web-only
+        | {{ patient.compliance_rate }}
+      .table-cell.actions
+        a ui-sref="dialogs.item({ receiverId: patient.id })"
+          i.mi message
+
+

@@ -1,0 +1,21 @@
+
+.popover
+  .arrow
+  .popover-content
+    form role="form" ng-submit="saveSchedule()"
+      .form-group
+        p.info Specify daily schedule:
+        table
+          tr
+            td breakfast
+            td lunch
+            td dinner
+            td bedtime
+          tr
+            td: input.form-control style="width: 50px;" type="text" maxlength="255" ng-model="item.data.schedule.breakfast"
+            td: input.form-control style="width: 50px;" type="text" maxlength="255" ng-model="item.data.schedule.lunch"
+            td: input.form-control style="width: 50px;" type="text" maxlength="255" ng-model="item.data.schedule.dinner"
+            td: input.form-control style="width: 50px;" type="text" maxlength="255" ng-model="item.data.schedule.bedtime"
+      .form-group
+        .button-cont.a-center
+          button.btn.btn-primary type="submit" ng-disabled="!scheduleSelected()" Ok

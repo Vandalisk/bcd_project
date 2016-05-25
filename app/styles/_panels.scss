@@ -1,0 +1,256 @@
+
+
+.panel-grey {
+  background-color: #f7f7f7;
+  border-radius: 0;
+  > .panel-heading, > .panel-body {
+    border-radius: 0;
+  }
+  // @include panel-variant($border-color, $heading-text-color, $heading-bg-color, $heading-border-color)
+  @include panel-variant(darken(#e6e6e6, 6.5%), darken(#e6e6e6, 50%), #e6e6e6, darken(#e6e6e6, 6.5%));
+
+  .panel-heading {
+    padding: 0;
+    display: table;
+    width: 100%;
+    .panel-heading-caption {
+      padding: 10px 15px;
+      display: table-cell;
+      width: 99%;
+    }
+    .panel-heading-buttons {
+      display: table-cell;
+      button {
+        margin: -1px;
+        height: 42px;
+        border-radius: 0;
+        color: darken(#e6e6e6, 50%);
+        border-color: darken(#e6e6e6, 6.5%);
+        background-color: lighten(#e6e6e6, 6.5%);
+        &:hover { background-color: lighten(#e6e6e6, 8%); }
+      }
+    }
+  }
+}
+
+.active-patient-main {
+  .panel-grey {
+    &.info {
+      @include panel-variant(darken($primary-bg-color, 6.5%), darken($primary-bg-color, 50%), $primary-bg-color, darken($primary-bg-color, 6.5%));
+    }
+    &.cqi {
+      @include panel-variant(darken(#eed1c7, 6.5%), darken(#eed1c7, 50%), #eed1c7, darken(#eed1c7, 6.5%));
+      > .panel-heading {
+        cursor: pointer;
+      }
+    }
+    &.lab {
+      @include panel-variant(darken(#bfd1f4, 6.5%), darken(#bfd1f4, 50%), #bfd1f4, darken(#bfd1f4, 6.5%));
+      .panel-heading .pointer {
+        cursor: pointer;
+      }
+    }
+    &.nurse {
+      @include panel-variant(darken(#dacca8, 6.5%), darken(#dacca8, 50%), #dacca8, darken(#dacca8, 6.5%));
+    }
+  }
+}
+
+.active-patient-main {
+  .panel-grey {
+    &.info {
+      .panel-heading-buttons button {
+        color: darken($primary-bg-color, 50%);
+        border-color: darken($primary-bg-color, 6.5%);
+        background-color: lighten($primary-bg-color, 6.5%);
+        &:hover { background-color: lighten($primary-bg-color, 8%); }
+      }
+    }
+    &.cqi {
+      .panel-heading-buttons button {
+        color: darken(#eed1c7, 50%);
+        border-color: darken(#eed1c7, 6.5%);
+        background-color: lighten(#eed1c7, 6.5%);
+        &:hover { background-color: lighten(#eed1c7, 8%); }
+      }
+    }
+  }
+}
+
+.toggle-active-patient {
+  width: 120px;
+}
+
+.panel-grey.lab {
+  @include panel-variant(darken(#e6e6e6, 6.5%), darken(#e6e6e6, 50%), #e6e6e6, darken(#e6e6e6, 6.5%));
+  .panel-heading .pointer {
+    cursor: pointer;
+  }
+
+  .panel-body {
+    padding: 20px 15px;
+  }
+  .wrap-lab-test.dashboard {
+    :focus {
+      outline: none;
+    }
+    .lab-results-grid {
+      border: 1px solid #808080;
+      padding: 0;
+      background-color: #fff;
+    }
+    .ag-row-odd {
+      background-color: #f7f7f7;
+    }
+
+    .ag-pinned-header {
+      .ag-header-cell {
+        border-right: 1px solid #808080;
+      }
+      .ag-header-cell-label {
+        justify-content: flex-start;
+        padding: 0 10px 0 20px;
+      }
+      .ag-header-cell-text {
+        line-height: 50px;
+      }
+    }
+
+    .ag-header-cell-label {
+      box-sizing: border-box;
+      border-bottom: 1px solid #808080;
+      height: 100%;
+      padding: 0 10px 0 0;
+      text-align: right;
+      display: flex;
+      justify-content: flex-end;
+      color: #696969;
+
+      .ag-header-cell-text {
+        margin: auto 0;
+      }
+    }
+
+    .ag-pinned-cols-container .ag-cell {
+      border-right: 1px #808080 solid;
+      box-sizing: border-box;
+    }
+
+    .cell .value {
+      text-align: right;
+      padding: 10px 10px 5px 20px;
+      color: #696969;
+      &.code-name {
+        padding-top: 8px;
+        font-size: 14px;
+        display: inline-block;
+      }
+      &.red {
+        color: #FF7878;
+      }
+      &.details-included {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .wrap-mobile-version {
+    display: none;
+    p {
+      color: #696969;
+      font-size: 14px;
+      padding: 0;
+      &.title {
+        margin: 0 0 10px 0;
+        font-size: 16px;
+      }
+    }
+    .full-screen-table {
+      display: inline-flex;
+      align-items: center;
+      &:hover, &:focus {
+        text-decoration: none;
+        span {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+      .f16 {
+        color: #009688;
+        font-size: 16px;
+      }
+      span {
+        color: #009688;
+        margin: 0 0 0 10px;
+      }
+    }
+    .last-test {
+      margin: 10px 0;
+    }
+    .header {
+      display: flex;
+      align-items: baseline;
+      i.red {
+        color: #f43f32;
+        font-size: 18px;
+        margin: 0 0 0 0px;
+      }
+      span {
+        margin: 0 0 0 8px;
+      }
+    }
+    .body {
+      color: #696969;
+      ul {
+        margin: 0;
+        padding: 0 0 0 26px;
+        list-style: none;
+        li:before {
+          content: "–";
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .wrap-mobile-version {
+      display: block;
+      &.hide {
+        display: none;
+      }
+    }
+    .wrap-lab-test.dashboard {
+      display: none;
+      &.visible {
+        display: block;
+      }
+    }
+  }
+}
+
+.panel.panel-grey .toggle-panel {
+  width: 40px;
+  height: 40px;
+  display: none;
+  i {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    text-align: center;
+    line-height: 24px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .panel.panel-grey {
+    .toggle-panel {
+      display: inline-flex;
+    }
+    .panel-heading .panel-heading-caption {
+      padding-left: 0;
+    }
+  }
+}

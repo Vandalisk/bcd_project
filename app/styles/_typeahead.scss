@@ -1,0 +1,281 @@
+span.twitter-typeahead {
+  width: 100%;
+
+  .tt-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: $zindex-dropdown;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: $font-size-base;
+    text-align: left;
+    background-color: $dropdown-bg;
+    border: 1px solid $dropdown-fallback-border; // IE8 fallback
+    border: 1px solid $dropdown-border;
+    border-radius: $border-radius-base;
+    @include box-shadow(0 6px 12px rgba(0,0,0,.175));
+    background-clip: padding-box;
+    max-height: 520px;
+    overflow: auto;
+
+    .tt-suggestions {
+      display: table !important;
+      .tt-suggestion {
+        .tt-highlight {
+          vertical-align: baseline;
+          display: inline-block;
+          margin-top: -1px;
+        }
+        p {
+          margin: 0;
+          padding: 4px 15px;
+          cursor: pointer;
+          &.inactive {
+            cursor: default;
+            color: #999;
+          }
+        }
+
+        &.tt-cursor {
+          color: $dropdown-link-hover-color;
+          background-color: $dropdown-link-hover-bg;
+        }
+      }
+    }
+
+    .empty {
+      padding: 0;
+      margin: 0;
+      color: #777;
+      p {
+        margin: 20px;
+        padding: 0;
+      }
+    }
+  }
+}
+
+
+
+header span.twitter-typeahead {
+  width: 100%;
+
+  .tt-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: $zindex-dropdown;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: $font-size-base;
+    text-align: left;
+    background-color: $dropdown-bg;
+    border: 1px solid $dropdown-fallback-border; // IE8 fallback
+    border: 1px solid $dropdown-border;
+    border-radius: $border-radius-base;
+    @include box-shadow(0 6px 12px rgba(0,0,0,.175));
+    background-clip: padding-box;
+    max-height: 520px;
+    overflow: auto;
+
+    .tt-suggestions {
+      display: table !important;
+      .tt-suggestion {
+        .tt-highlight {
+          vertical-align: baseline;
+          display: inline-block;
+          margin-top: -1px;
+        }
+        cursor: pointer;
+        display: table-row;
+        font-weight: normal;
+        color: $dropdown-link-color;
+        margin: 0;
+        height: 50px;
+        .info {
+          display: table-cell;
+          vertical-align: top;
+          padding: 25px 20px 0 0;
+          color: #777;
+          &.ava {
+            width: 50px;
+            padding: 10px 10px;
+            border-left-width: 5px;
+            border-left-style: solid;
+            border-left-color: transparent;
+            img {
+              border-radius: 15px;
+            }
+            &.role-admin { border-left-color: $border-role-admin; }
+            &.role-doctor { border-left-color: $border-role-doctor; }
+            &.role-patient { border-left-color: $border-role-patient; }
+          }
+        }
+        .name, .role {
+          display: block !important;
+          position: absolute;
+          padding-top: 5px;
+        }
+        .name {
+          left: 57px;
+          font-size: 1.1em;
+          overflow: hidden;
+          text-overflow: clip;
+          max-width: 350px;
+          max-height: 1.8em;
+        }
+        .role {
+          right: 0;
+          padding-right: 20px;
+          color: #999;
+        }
+        &:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+        &.tt-cursor {
+          color: $dropdown-link-hover-color;
+          background-color: $dropdown-link-hover-bg;
+        }
+      }
+    }
+
+    .empty {
+      padding: 0;
+      margin: 0;
+      color: #777;
+      p {
+        margin: 20px;
+        padding: 0;
+      }
+    }
+  }
+}
+
+
+
+.sidebar span.twitter-typeahead {
+  width: 100%;
+
+  .tt-dropdown-menu {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: $zindex-dropdown;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: $font-size-base;
+    text-align: left;
+    background-color: $dropdown-bg;
+    border: 1px solid $dropdown-fallback-border; // IE8 fallback
+    border: 1px solid $dropdown-border;
+    border-radius: $border-radius-base;
+    @include box-shadow(0 6px 12px rgba(0,0,0,.175));
+    background-clip: padding-box;
+    max-height: 505px;
+    overflow: auto;
+
+    .tt-suggestions {
+      display: table !important;
+      width: 100%;
+      .tt-suggestion {
+        .tt-highlight {
+          vertical-align: baseline;
+          display: inline-block;
+          margin-top: -1px;
+        }
+        cursor: pointer;
+        display: table-row;
+        font-weight: normal;
+        color: $dropdown-link-color;
+        margin: 0;
+        height: 50px;
+
+        .ava, .info {
+          display: table-cell;
+          vertical-align: top;
+          color: #777;
+          padding: 10px 0 10px 0;
+
+
+          > span {
+            display: block;
+          }
+          .name {
+            font-size: 1.1em;
+          }
+        }
+        .ava {
+          width: 50px;
+          padding: 10px 10px;
+          border-left-width: 5px;
+          border-left-style: solid;
+          border-left-color: transparent;
+          img {
+            border-radius: 15px;
+          }
+          &.role-doctor {
+            border-left-color: #17A0F7;
+          }
+          &.role-patient {
+            border-left-color: #269984;
+          }
+        }
+        .role {
+          right: 0;
+          padding-right: 20px;
+          color: #999;
+        }
+        &:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+        &.tt-cursor {
+          color: $dropdown-link-hover-color;
+          background-color: $dropdown-link-hover-bg;
+        }
+      }
+    }
+
+    .empty {
+      padding: 0;
+      margin: 0;
+      color: #777;
+      p {
+        margin: 20px;
+        padding: 0;
+      }
+    }
+  }
+}
+
+
+
+
+
+.input-group {
+  span.twitter-typeahead {
+    display: block !important;
+    .tt-dropdown-menu {
+      top: 32px !important;
+    }
+  }
+  &.input-group-lg span.twitter-typeahead .tt-dropdown-menu {
+    top: 44px !important;
+  }
+  &.input-group-sm span.twitter-typeahead .tt-dropdown-menu {
+    top: 28px !important;
+  }
+}

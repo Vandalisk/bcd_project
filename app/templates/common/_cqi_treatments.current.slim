@@ -1,0 +1,10 @@
+.no-results ng-show="requestedTreatments && newTreatments && activeTreatments && requestedTreatments.length == 0 && newTreatments.length === 0 && activeTreatments.length === 0"
+  | No treatments yet...
+
+div ng-include="'/app/templates/common/current_treatments/_dpd_treatments.html'"
+
+div ng-include="'/app/templates/common/current_treatments/_requested_treatments.html'"
+
+div ng-include="'/app/templates/common/current_treatments/_suggested_treatments.html'"
+
+div ng-include="'/app/templates/common/current_treatments/_active_treatments.html'"

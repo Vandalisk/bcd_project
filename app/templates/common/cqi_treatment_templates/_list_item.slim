@@ -1,0 +1,35 @@
+.new-cqi-treatment
+  .table.top-panel
+    .table-row
+      .table-cell.arrow ng-click="collapseItem(item)"
+        i.mi {{ item.isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+      .table-cell.brief-explanation
+        span.treatment-name {{ item.name }}
+        span.treatment-type {{ item.treatment_type | treatmentTypeConverter }}
+      .table-cell.impact
+        span ng-class="determineColor(item.impact)" {{ item.impact | impactConverter}}
+      .table-cell.power-col {{ item.power }}
+      .table-cell.arrow-right style="width: 50px" ng-click="toggleSelect(item)"
+        .pull-right.circle ng-class="{ 'green-circle': isSelected(item) }"
+          i.daw.mi done
+  .collapse data-uib-collapse="item.isCollapsed"
+    .table.bottom-panel
+      .table-row
+        .table-cell.icon
+          i.mi assignment
+        .table-cell.description {{ item.full_name }}
+        .table-cell
+      .table-row
+        .table-cell.icon
+          i.mi star
+        .table-cell.compliance-hint Till the end of trial study:
+        .table-cell
+      .table-row
+        .table-cell
+        .table-cell.compliance-number up to {{ item.calculatedPoints }} points
+        .table-cell
+      .table-row
+        .table-cell.icon
+          i.mi description
+        .table-cell.description {{ item.description }}
+        .table-cell

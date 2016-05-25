@@ -1,0 +1,314 @@
+p.hint {
+  font-size: 14px;
+  font-style: italic;
+  width: 100%;
+  color: $grey-54;
+  word-wrap: break-word;
+  padding: 34px 0 0 0;
+  word-break: initial;
+}
+
+.healthcare-table {
+  font-size: 14px;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0px;
+
+  th { font-weight: normal; }
+
+  td {
+    padding: 0 0 10px 20px;
+    background-color: white;
+    @media only screen and (max-width : 768px) {
+      padding-left: 10px;
+    }
+  }
+
+  > tbody > tr { border-bottom: 2px solid $main-bg; }
+
+  .hint-mark {
+    z-index: 10;
+  }
+  .treatment-name {
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .treatment-type {
+    font-style: italic;
+    color: #9e9e9e;
+    margin-left: 10px;
+  }
+  .brief-explanation {
+    width: 500px;
+    padding-top: 10px;
+  }
+  .impact {
+    width: 185px;
+    padding-top: 10px;
+    padding-left: 20px;
+    > span {
+      border-radius: 10%;
+      padding: 2px 6px;
+      &.pink {
+        background-color: $pink;
+      }
+      &.light-blue {
+        background-color: $light-blue;
+      }
+      &.salad-green {
+        background-color: $salad-green;
+      }
+      &.liliac {
+        background-color: $liliac;
+      }
+    }
+  }
+  .power, .compliance {
+    padding-top: 10px;
+    .compliance-col, .power-col {
+      font-size: 16px;
+    }
+    .power-col {
+      font-weight: bolder;
+    }
+  }
+
+  .prescription {
+    margin-top: 20px;
+    .bottom {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.divider {
+  padding: 8px 0 0 0;
+  border-bottom: 1px solid $grey-12;
+  @media only screen and (max-width : 768px) {
+    margin-bottom: 25px;
+  }
+}
+.bottom-space {
+  margin-bottom: 10px;
+}
+
+.healthcare-header {
+  padding: 30px 0 5px 20px;
+  @media only screen and (max-width : 768px) {
+    padding: 20px 10px 10px 10px;
+  }
+  .header-power {
+    margin-right: 150px;
+  }
+  .header-hint {
+    color: $grey-54;
+    padding-top: 15px;
+    font-style: italic;
+    max-width: 840px;
+  }
+
+  .hint-icon {
+    float: right;
+    opacity: 0.54;
+    cursor: pointer;
+  }
+
+  p {
+    padding: 0;
+    font-size: 14px;
+    display: inline-block;
+
+    .hint-icon {
+      opacity: 0.54;
+      cursor: pointer;
+    }
+  }
+}
+
+.healthcare-table tbody tr {
+  &.main-data {
+    border-bottom: 0;
+
+    td {
+      padding-bottom: 0;
+
+      &.arrow {
+        cursor: pointer;
+        padding-top: 15px;
+        color: $grey-54;
+        width: 1px;
+      }
+
+      &.arrow:hover { color: black; }
+
+      &:last-child, .icon {
+        padding-right: 10px;
+      }
+    }
+  }
+  &.additional-data {
+    tbody tr td:last-child {
+      padding-right: 10px;
+    }
+    tbody tr:last-child td.buttons {
+      @media only screen and (max-width: 768px) {
+        padding: 20px 10px 0 0;
+      }
+    }
+  }
+}
+
+.main-data p {
+  &.name {
+    font-size: 14px;
+    font-weight:bold;
+  }
+
+  &.description {
+    font-style: italic;
+    color: $grey-38;
+  }
+}
+
+.healthcare-table tbody tr {
+  &.additional-data {
+    td {
+      padding-top: 0;
+      padding-left: 0;
+
+      &.icon, &.date-icon {
+        vertical-align: top;
+        padding: 25px 15px 0 20px;
+        background-color: white;
+        width: 65px;
+        @media only screen and (max-width : 768px) {
+          padding: 10px;
+          width: inherit;
+        }
+      }
+
+      &.history {
+        p {
+          margin-top: 18px;
+
+          &.no-indent {
+            margin-top: 0;
+          }
+        }
+      }
+
+      &.date-icon {
+        padding: 50px 0 0 20px;
+      }
+
+      &.date {
+        padding: 50px 0 40px 0;
+      }
+
+      @media only screen and (max-width : 768px) {
+        &.date-icon {
+          padding: 20px 0 0 10px;
+        }
+        &.date {
+          padding: 20px 0 0 0;
+        }
+      }
+      &.description {
+        width: 621px;
+        padding-top: 23px;
+        @media only screen and (max-width : 768px) {
+          vertical-align: top;
+          width: auto;
+          padding: 10px 0 0 0;
+        }
+        .comment {
+          padding-top: 0;
+          white-space: pre-line;
+        }
+      }
+    }
+    .history_picture_and_text {
+      .icon {
+        padding-top: 10px
+      }
+      .state {
+        padding-bottom: 0
+      }
+      .comment {
+        white-space: pre-line;
+      }
+    }
+    table.inputs {
+      td.tabs-input {
+        padding-top: 22px;
+      }
+      td.dosage {
+        padding: 22px 0 0 5px;
+      }
+    }
+  }
+}
+
+.additional-data {
+  font-size: 12px;
+
+  .abstract-hint {
+    padding: 5px 0 10px 0;
+    color: #757575;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  .description-text {
+    padding: 5px 0 10px 0;
+  }
+
+  i:hover {
+    color: $grey-54;
+  }
+  .ava img {
+    border-radius: 15px;
+  }
+}
+
+.healthcare-table.current thead tr th {
+  padding: 30px 20px 10px 20px;
+  font-size: 14px;
+}
+
+.healthcare-table.current {
+  .names {
+    padding-bottom: 12px;
+    padding-top: 10px;
+    .visible-xs-bl {
+      display: none !important;
+      text-align: center;
+      margin-right: 34px;
+      @media only screen and (max-width : 768px) {
+        display: block !important;
+      }
+    }
+  }
+
+  .number {
+    padding-top: 10px;
+    font-size: 24px;
+    color: black;
+    @media only screen and (max-width : 768px) {
+      width: 100%;
+    }
+  }
+}
+
+.healthcare-table.completed tbody tr {
+  .numbers_and_text {
+    display: inline-block;
+    padding: 20px 0 5px 45px;
+    color: black;
+
+    .number { font-size: 24px; }
+    .text { padding: 5px 0 0 0; }
+  }
+}

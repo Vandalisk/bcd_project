@@ -1,0 +1,28 @@
+.cont
+  div treatment-search=""
+  .main-table
+    .interactive-table.healthcare ng-show="(medicationTabletsItems && medicationTabletsItems.length > 0)"
+      p.requests-header Medication
+      p.requests-header.pull-right.power Power
+      .table.requests-table
+        .table-row ng-repeat="item in medicationTabletsItems | filter:filters" ng-class="{ selected: isSelected(item), active: isActive(item) }"
+          div ng-include="'/app/templates/common/cqi_treatment_templates/_list_item.html'"
+
+    .interactive-table.healthcare ng-show="medicationInjectionItems && medicationInjectionItems.length > 0"
+      p.requests-header Medication
+      p.requests-header.pull-right.power Power
+      .table.requests-table
+        .table-row ng-repeat="item in medicationInjectionItems | filter:filters" ng-class="{ selected: isSelected(item), active: isActive(item) }"
+          div ng-include="'/app/templates/common/cqi_treatment_templates/_list_item.html'"
+
+    .interactive-table.healthcare ng-show="lifestyleItems && lifestyleItems.length > 0"
+      p.requests-header Lifestyle
+      .table.requests-table
+        .table-row ng-repeat="item in lifestyleItems | filter:filters" ng-class="{ selected: isSelected(item), active: isActive(item) }"
+          div ng-include="'/app/templates/common/cqi_treatment_templates/_list_item.html'"
+
+    .interactive-table.healthcare ng-show="exerciseItems && exerciseItems.length > 0"
+      p.requests-header Exercise
+      .table.requests-table
+        .table-row ng-repeat="item in exerciseItems | filter:filters" ng-class="{ selected: isSelected(item), active: isActive(item) }"
+          div ng-include="'/app/templates/common/cqi_treatment_templates/_list_item.html'"

@@ -1,0 +1,16 @@
+.sidebar scroll-y-fix=true
+  div ng-include="'/app/templates/common/_sidebar.html'"
+.main flex=true scroll-y=true
+  .educational_materials
+    .top_information
+    | Have questions about diabetes and Thyroid? Or need advise how to adjust medication dosages? Here are some materials, that may be useful for you. If still need more information — welcome to our site:&nbsp;
+    a.in_top href="http://www.bcdiabetes.ca" target="_blank" http://www.bcdiabetes.ca/
+
+    .main_info
+      .diabetes_title Diabetes
+      .diabet_link ng-repeat="diabet in diabets"
+        a ng-href="{{ diabetLink + diabet.link }}" target="_blank" {{ diabet.name }}
+
+      .thyroid_title Thyroid
+      .thyroid_link ng-repeat="thyroid in thyroids"
+        a ng-href="{{ thyroidLink + thyroid.link }}" target="_blank" {{ thyroid.name }}

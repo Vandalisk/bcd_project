@@ -1,0 +1,27 @@
+.sidebar scroll-y-fix=true
+  div ng-include="'/app/templates/common/_sidebar.html'"
+.main flex=true scroll-y-fix=true scroll-x=true layout="column"
+  .blood-glucose
+    .row
+      .header
+        .col-md-6.col-sm-6.col-xs-12.pull-left
+          h2 Blood Glucose
+        .col-md-6.col-sm-6.col-xs-12.pull-right
+          select.form-control ng-model="selectedMonth" ng-options="month for month in months"
+    .table-container ng-if="dataSetNotEmpty()"
+      .bg-table.pull-left.fixedcol
+        .bg-row
+          .bg-cell
+        .bg-row ng-repeat="(key, value) in data"
+          .bg-cell {{ key }}
+      .bg-table.pull-left.datacols style="max-width: calc( 60px * {{ dates.length }} );"
+        .viewport
+          .bg-row
+            .bg-cell ng-repeat="d in dates | orderBy:'-label'"
+              | {{ d.label }}
+          .bg-row ng-repeat="(key, values) in data"
+            .bg-cell ng-click="openPopup(key, values, $index, k, v)" ng-repeat="(k, v) in values | orderObjectBy:key:true"
+              | {{ v.value }}
+              bg-popup ng-if="v.visible" obj="v" schedule="key" patient_id="user.id"
+    .msg ng-show="!dataSetNotEmpty()"
+      | There are no measurements for selected month

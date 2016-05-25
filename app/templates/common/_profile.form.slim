@@ -1,0 +1,66 @@
+
+form role="form" ng-submit="submit()"
+  .form-group access="admin"
+    label Role
+    /.radio
+    /  label
+    /    input type="radio" ng-model="user.role" value="patient" Patient
+    .radio
+      label
+        input type="radio" ng-model="user.role" value="doctor" Doctor
+    .radio
+      label
+        input type="radio" ng-model="user.role" value="case" Case manager
+  .form-group
+    label E-mail
+    input.form-control type="email" ng-model="user.email" maxlength="255" required=true
+  .form-group
+    label First Name
+    input.form-control type="text" ng-model="user.first_name" maxlength="255" required=true
+  .form-group
+    label Last Name
+    input.form-control type="text" ng-model="user.last_name" maxlength="255" required=true
+  .form-group
+    label Phone
+    input.form-control type="text" ng-model="user.phone" maxlength="255" required=true
+  .form-group
+    label Gender
+    .radio
+      label
+        input type="radio" ng-model="user.gender" value="male" Male
+    .radio
+      label
+        input type="radio" ng-model="user.gender" value="female" Female
+  .form-group
+    label Born
+    div
+      select.form-control ng-model="born.date.year" ng-options="item for item in born.options.years" placeholder="year" required=true style="width: 150px;"
+      | &nbsp;
+      select.form-control ng-model="born.date.month" ng-options="item for item in born.options.months" placeholder="month" required=true style="width: 150px;"
+      | &nbsp;
+      select.form-control ng-model="born.date.day" ng-options="item for item in born.options.days" placeholder="day" required=true style="width: 150px;"
+  .form-group ng-if="allowChangePassword"
+    .actions
+      .accordion-title ng-click="options.changePassword = true" ng-hide="options.changePassword"
+        i.fa.fa-chevron-down
+        span.text Change password
+      .accordion-title ng-click="options.changePassword = false" ng-show="options.changePassword"
+        i.fa.fa-chevron-up
+        span.text Change password
+    div ng-show="options.changePassword"
+      .form-group
+        input.form-control type="password" ng-model="user.password" placeholder="Set new password" maxlength="255" toggle-password-text="showSymbols"
+      .form-group
+        .checkbox
+          label
+            input type="checkbox" ng-model="showSymbols" Show symbols
+  .form-group
+    .button-cont
+      button.btn.btn-primary type="submit" ng-disabled="sending_xhr" {{ captions.submit }}
+      | &nbsp;
+      button.btn.btn-default type="button" ng-click="cancel()" Cancel
+  .form-group
+    p.error.text-danger
+      span ng-repeat="error in errors"
+        | {{ error }}
+        br

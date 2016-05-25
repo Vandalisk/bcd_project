@@ -1,0 +1,308 @@
+
+header {
+  z-index: $zindex-navbar-fixed;
+  color: $navbar-default-color;
+  background-color: $navbar-default-bg;
+  border-color: $navbar-default-border;
+  border-style: solid;
+  border-width: 1px 0;
+  height: 60px;
+  .wrap {
+    .sidebar {
+      a.logo, a.logo:hover {
+        display: block;
+        font-size: 0;
+        background-image: url('assets/images/bcd_logo.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 42px;
+      }
+    }
+  }
+}
+
+.dropdown-menu > li > a {
+  padding: 10px 20px;
+}
+
+.custom-header {
+  font-family: 'Open Sans Semibold', 'Open Sans';
+  margin-top: 20px;
+  margin-left: 200px;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+  color: #FFFFFF;
+  text-align: left;
+  line-height: 20px;
+}
+
+.navbar, .navbar-mobile {
+  display: table;
+  width: 100%;
+  border: none;
+  height: $header-height;
+  position: static;
+  margin: -1px;
+
+  > ul {
+    list-style-type: none;
+    display: table-row;
+    position: relative;
+    > li {
+      display: table-cell;
+      height: $header-height;
+      vertical-align: middle;
+      white-space: nowrap;
+
+      &.search-form-wrapper {
+        position: relative;
+        .mi-search {
+          opacity: 0.8;
+          top: 9px;
+          color: #fff!important;
+        }
+        .text {
+          font-style: italic;
+          padding-right: 10px;
+          bottom:6px;
+        }
+      }
+
+      > a {
+        text-decoration: none;
+        display: block;
+        height: $header-height;
+        line-height: $header-height - 5px;
+        padding: 0 10px;
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+
+        color: $navbar-default-link-color;
+        &:hover, &:focus {
+          color: $navbar-default-link-hover-color;
+          background-color: $navbar-default-link-hover-bg;
+        }
+      }
+      &.holder {
+        width: 99%;
+      }
+      &.search {
+        width: 99%;
+        background-color: $navbar-default-link-active-bg;
+//        visibility: hidden;
+        display: none
+      }
+      &.search.open {
+//        visibility: visible;
+        display: table-cell;
+      }
+      &.user-menu {
+        float: right;
+        height: 100%;
+
+        .ava img {
+          border-radius: 15px;
+        }
+        .dropdown-toggle {
+          display: inline-block;
+          cursor: auto!important;
+        }
+        span.mi-keyboard-arrow-down {
+          cursor: pointer;
+          top: 12px;
+        }
+        a .current_user {
+          display: inline-block;
+//          margin-right: 6em;
+          bottom: 5px;
+
+          span.text {
+            font-weight: bold;
+          }
+        }
+        .dropdown-menu {
+          right: 0;
+          left: auto;
+          box-sizing: content-box;
+          box-shadow: none;
+          border-radius: 0;
+        }
+      }
+      .simple-dropdown {
+        transition: transform 0.3s;
+      }
+      .for_search_form {
+        display: block;
+        width: calc(100% - 50px);
+        float: left;
+      }
+      &.user-menu.open {
+        background-color: #fff;
+        > a {
+          color: #333;
+          background-color: #fff;
+          border-bottom: 1px solid #e5e5e5;
+        }
+        .simple-dropdown {
+          color: #333;
+          transform: rotate(180deg);
+        }
+      }
+      .active {
+        display: block;
+        float: right;
+        width: 50px;
+        padding: 17px;
+        height: 50px;
+
+        > a {
+          &, &:hover, &:focus {
+            color: $navbar-default-link-active-color;
+            background-color: $navbar-default-link-active-bg;
+          }
+        }
+      }
+      .cross {
+        color: #fff!important;
+        font-size: 14px;
+        wont-weight: bold;
+      }
+    }
+    .user-name {
+      font-size: 16px;
+      top: 2px;
+    }
+
+    .dropdown-menu, .tt-dropdown-menu {
+      margin-top: -1px;
+      margin-right: -1px;
+      padding: 0;
+      border-top-width: 0;
+      left: -1px!important;
+      border-top-radius: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-top-color: #e5e5e5;
+      width: 100%;
+    }
+  }
+}
+
+.search-form {
+  border: none;
+  padding-right: 0;
+  margin: 0;
+  margin-bottom: 2px;
+  padding-left: 10px;
+  .form-group {
+    margin: 0;
+    width: 100%;
+
+    &.has-feedback{
+      top: 8px;
+    }
+    input {
+      width: 100%;
+      padding-left: 32px;
+    }
+    .form-control-feedback {
+      top: 0;
+      line-height: 34px !important;
+    }
+    .fa-search.form-control-feedback {
+      left: 0;
+      color: #777;
+      padding-left: 8px;
+      font-size: 20px;
+    }
+  }
+}
+
+header {
+  .active-patient {
+    &:hover {
+      color: $navbar-default-link-hover-color;
+      background-color: $navbar-default-link-hover-bg;
+    }
+    display: table-row;
+    position: relative;
+    cursor: pointer;
+    > div {
+      white-space: nowrap;
+    }
+    .ava, .info {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .ava {
+      padding: 0 10px;
+      height: 50px;
+      line-height: 50px;
+      img {
+        border-radius: 15px;
+      }
+    }
+    .name {
+      display: block !important;
+      position: absolute;
+      top: 7px;
+      left: 53px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 400px;
+    }
+    .info {
+      padding: 18px 15px 0 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 400px;
+    }
+  }
+}
+
+.navbar-mobile { display: none; }
+
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+  }
+  .navbar-mobile {
+    display: table;
+    > ul {
+      > li {
+        text-align: center;
+        font-size: 1.5em;
+        &.back, &.menu {
+          min-width: 50px;
+        }
+        &.caption {
+          width: 99%;
+          .caption-links {
+            display: none;
+          }
+          &.links-container {
+            text-align: left;
+            .caption-text {
+              display: none;
+            }
+            .caption-links {
+              display: inline;
+            }
+            a {
+              color: white;
+              padding: 0 30px;
+              font-weight: 600;
+              opacity: 0.6;
+              &.selected {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+

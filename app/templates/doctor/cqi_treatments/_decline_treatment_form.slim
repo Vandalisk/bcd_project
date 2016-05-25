@@ -1,0 +1,41 @@
+.cont.decline-prescription
+  h4.modal-header Decline request?
+  .table
+    .table-row.main-data
+      .table-cell.icon
+      .table-cell
+        p {{ item.name }}
+    .table-row.additional-data
+      .table-cell.icon
+        i.mi assignment
+      .table-cell
+        .abstract-hint Default prescription
+    .table-row.additional-data
+      .table-cell.icon
+      .table-cell
+        p.item-fullname {{ item.full_name }}
+    .table-row.additional-data
+      .table-cell.icon
+        div.ava
+          img style="border-radius: 15px;" ng-src="{{ item.sender_gravatar_url + '&s=24' }}"
+      .table-cell
+        .abstract-hint Patient requests
+        p {{ item.model.suggestOrRequestBy() }}
+        span.comment style="white-space: pre-line;" {{ item.patient_comment }}
+    .table-row.additional-data access='doctor'
+      .table-cell.icon.closer
+        i.mi style="transform: scaleX(-1);" message
+      .table-cell
+        p.abstract-hint Why declined? Explain in few words,
+        textarea.form-control.animate ng-model="item.doctor_comment" msd-elastic="\n" style="min-height: 54px;"
+    .table-row.additional-data access='patient'
+      .table-cell.icon
+        i.mi description
+      .table-cell.text-area
+        textarea.form-control.animate ng-model="item.patient_comment" placeholder="Take your medicine in time, according to prescrition. Control how do you feel. In case of negative symptoms, contact your Case Manager. If you changed dosage or schedule — please, correct values before confirmation." style="min-height: 84px;" msd-elastic=true
+
+.request-send-buttons
+  .button_accepted
+    .btn.btn-primary-green ng-click="decline()" ng-disabled="formDisabled" decline
+  .button_decline
+    .btn.btn-flat-green ng-click="cancel()" Cancel

@@ -1,0 +1,12 @@
+
+h4
+  | Export data to CSV
+p
+  | Exporting data
+  br
+  span.please-wait ng-hide="data.done" Please wait...
+  span.please-wait ng-show="data.done" Done.
+p.export-progress Exported records: {{ data.done_count }}
+.download-link ng-show="data.downloadUrl"
+  a ng-href="{{ data.downloadUrl }}" Download CSV file
+.error ng-show="data.error" {{ data.error }}

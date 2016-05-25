@@ -1,0 +1,13 @@
+.sidebar scroll-y-fix=true
+  div ng-include="'/app/templates/common/_sidebar.html'"
+.main flex=true scroll-y=true
+  .cont-top.cont.treatment-temlates-list ng-controller="ctrl.doctor.CqiTreatmentTemplateManage" access="head"
+    div
+      div ng-hide="options.showForm"
+        .text Templates allow to prescribe medication and other treatment faster. It contains default dosages, formulations  and descriptions. When suggesting treatments to patient in Healthcare Plan, it is enough to correct dosages and add individual recommedations to prescription.
+        button.btn.btn-primary.web-only.create ng-click="create()" Create Treatment
+      div ng-if="options.showForm"
+        div ng-include="'/app/templates/doctor/cqi_treatment_templates/_form.html'"
+  .cont.bg-gray
+    div treatment-search=""
+    div ng-include="'/app/templates/doctor/cqi_treatment_templates/_list.html'"

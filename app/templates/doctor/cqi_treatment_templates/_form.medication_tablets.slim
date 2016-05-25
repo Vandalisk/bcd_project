@@ -1,0 +1,54 @@
+.form.medication
+  .form-group
+    .form-inline.dosage
+      .form-group style="width: 27%;display:inline-block"
+        p.info Strength:
+      .form-group style="width: 60%;display:inline-block"
+        p.info Take during a day:
+      .form-group style="vertical-align: top;"
+        table.strength
+          tr
+            td: input.form-control ng-class="{ error: errors.type.dosage }" type="text" maxlength="255" ng-model="item.data.dosage" select-on-click=true
+            td: select.form-control style="width: 100px;" ng-model="item.data.unit" ng-options="item.key as item.name for item in options.units"
+            td.action
+        .strength-error-message ng-show="errors.type.dosage"
+          p.error Set strength, like:
+          table
+            tbody
+              tr
+                td width="15"
+                td
+                  p.error 100
+                td width="15"
+                td
+                  p.error mg
+              tr
+                td
+                td
+                  p.error 50
+                td
+                td
+                  p.error micrograms
+      .form-group
+        table.during-a-day
+          tr
+            td: input.form-control ng-class="{ error: errors.type.schedule }" type="text" maxlength="255" ng-model="item.data.schedule.breakfast" select-on-click=true
+            td.thing
+            td: select.form-control ng-model="item.data.when" ng-options="item for item in options.scheduleOptions"
+            td breakfast
+          tr
+            td: input.form-control ng-class="{ error: errors.type.schedule }" type="text" maxlength="255" ng-model="item.data.schedule.lunch" select-on-click=true
+            td.thing
+            td {{ item.data.when }}
+            td lunch
+          tr
+            td: input.form-control ng-class="{ error: errors.type.schedule }" type="text" maxlength="255" ng-model="item.data.schedule.dinner" select-on-click=true
+            td.thing
+            td {{ item.data.when }}
+            td dinner
+          tr
+            td: input.form-control ng-class="{ error: errors.type.schedule }" type="text" maxlength="255" ng-model="item.data.schedule.bedtime" select-on-click=true
+            td.thing
+            td at
+            td bedtime
+        p.error {{errors.type.schedule}}

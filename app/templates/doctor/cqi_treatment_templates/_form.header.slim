@@ -1,0 +1,20 @@
+.form-group.template-state-panel
+  .state-btn.back ng-show="fn.showBackButton()" ng-click="fn.goPreviousStep()" Back
+  .states
+    .state ng-class="{ active: fn.currentStep('name') }"
+      | 1. Name
+      input type="checkbox" disabled="disabled" ng-checked="options.name"
+    .state ng-class="{ active: fn.currentStep('type') }"
+      | 2. Prescription
+      input type="checkbox" disabled="disabled" ng-checked="options.type"
+    .state ng-class="{ active: fn.currentStep('schedule') }"
+      | 3. Frequency & Power
+      input type="checkbox" disabled="disabled" ng-checked="options.schedule"
+    .state ng-class="{ active: fn.currentStep('description') }"
+      | 4. Description
+      input type="checkbox" disabled="disabled" ng-checked="options.description"
+  .pull-right
+    button.btn.btn-primary.text-uppercase type="button" ng-show="fn.currentStep('description')" ng-click="fn.formValid() && fn.submit()"
+      | {{ action === 'new' ? "Add to base" : "Save changes" }}
+    button.btn.btn-primary.text-uppercase type="button" ng-hide="fn.currentStep('description')" ng-click="fn.goNextStep()"
+      | Next

@@ -1,0 +1,7 @@
+.wrap flex=true layout="column" ng-if="!user" ng-include="'/app/templates/common/404.html'"
+.wrap flex=true layout="column" ng-if="user"
+  .main flex=true layout="column" layout-align="center" scroll-y=true
+    .cont
+      .center-form.sm
+        div ng-include="'/app/templates/common/compare_phn.html'" ng-if="!passwordForm"
+        div ng-include="'/app/templates/common/set_password.html'" ng-if="passwordForm"
